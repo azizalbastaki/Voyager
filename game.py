@@ -7,7 +7,7 @@ import simplepbr
 class MyApp(ShowBase):
     def __init__(self):
         ShowBase.__init__(self)   # initialise
-        simplepbr.init()
+        simplepbr.init(use_normal_maps=True)
         world = environment(self.render,self.loader)
         self.set_background_color(0.53,0.81,0.92)
         base.setFrameRateMeter(True)
