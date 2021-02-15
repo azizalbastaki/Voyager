@@ -3,10 +3,11 @@ import sys
 from panda3d.core import Vec3,DirectionalLight,PointLight,CollisionHandlerQueue,CollisionRay, WindowProperties, CollisionTraverser, CollisionHandlerPusher, CollisionSphere, CollisionNode, CollideMask, BitMask32
 import math
 from playerGUI import GUI
-
+from tools import buildingTool
 class Player():
     def __init__(self,camera,accept,render,loader,maxJPHeight):
         #initial variables and sounds
+        self.developer = True
         self.groundContact = False
         self.jetPack_energy = 100
         self.maximumHeight = maxJPHeight
@@ -15,6 +16,11 @@ class Player():
         #initiate GUI
         self.HUD = GUI()
         self.playerHolder = render.attachNewNode('player')
+        #camera control
+        props = WindowProperties()
+        props.setCursorHidden(True)
+        props.setMouseMode(WindowProperties.M_relative)
+        base.win.requestProperties(props)
 
         self.character = loader.loadModel('assets/base/models/player.bam')
         self.toggleFPCam = False
@@ -49,6 +55,8 @@ class Player():
         self.groundColNp = self.playerHolder.attachNewNode(self.groundRayCol)
         self.groundHandler = CollisionHandlerQueue()
         self.cTrav.addCollider(self.groundColNp, self.groundHandler)
+        if self.developer == True:
+            self.tool = buildingTool("newbuildings",self.playerHolder,loader,accept)
 
         self.setupLighting() # light
         #initial position
@@ -113,10 +121,10 @@ class Player():
         if self.toggleFPCam: #first person camera controls
             camera.setPos(self.character.getPos())  # 0,-50,-10
             #camera.setZ(camera, 20)
-            props = WindowProperties()
-            props.setCursorHidden(True)
-            props.setMouseMode(WindowProperties.M_relative)
-            base.win.requestProperties(props)
+            #props = WindowProperties()
+            #props.setCursorHidden(True)
+            #props.setMouseMode(WindowProperties.M_relative)
+            #base.win.requestProperties(props)
             self.character.hide()
 
             if (base.mouseWatcherNode.hasMouse() == True):
@@ -128,10 +136,10 @@ class Player():
                 if (mouseposition.getX() < 0.1 and mouseposition.getX() > -0.1):
                     self.playerBase.setH(self.playerBase.getH())
         else: #takes out of first person perspective if toggleFPS is turned off.
-            props = WindowProperties()
-            props.setCursorHidden(False)
-            props.setMouseMode(WindowProperties.M_absolute)
-            base.win.requestProperties(props)
+            #props = WindowProperties()
+            #props.setCursorHidden(False)
+            #props.setMouseMode(WindowProperties.M_absolute)
+            #base.win.requestProperties(props)
             self.character.show()
             camera.setPos(0, -50, -4)  # 0,-50,-10
             camera.lookAt(self.character)
@@ -167,21 +175,16 @@ class Player():
             self.jetPack_AUDIO.stop()
         self.HUD.jetpackStatus.text = str(int(self.jetPack_energy))+"%"
         #third person camera control
-        if (self.keyMap["leftClick"] == True) and (self.toggleFPCam == False): #third person camera controls
+        if (self.toggleFPCam == False): #third person camera controls
             if (base.mouseWatcherNode.hasMouse() == True):
                 mouseposition = base.mouseWatcherNode.getMouse()
-                self.mouseSeconds.append(mouseposition)
-            if len(self.mouseSeconds) == 2:
-                lookConstant = 1
-                upperconstant = 40
-                lowerconstant = 1
-                moveX = ((self.mouseSeconds[1].getX())*upperconstant - (self.mouseSeconds[0].getX())*lowerconstant)*lookConstant
-                moveY = ((self.mouseSeconds[1].getY())*upperconstant - (self.mouseSeconds[0].getY())*lowerconstant)*lookConstant
-                if (moveX > 1 or moveX < -1):
-                    self.playerBase.setH(self.playerBase.getH() - moveX)
-                if (moveY > 1 or moveY < -1):
-                    self.thirdPersonNode.setP(self.thirdPersonNode.getY()+moveY)
-                self.mouseSeconds = []
+                self.thirdPersonNode.setP(mouseposition.getY() * 30)
+                # self.playerBase.setH(self.playerBase.getH())
+                # camera.setP(mouseposition.getY() * 30)
+                self.playerBase.setH(mouseposition.getX() * -50)
+                if (mouseposition.getX() < 0.1 and mouseposition.getX() > -0.1):
+                    self.playerBase.setH(self.playerBase.getH())
+
         self.cTrav.traverse(render)
         self.playerHolder.setPos(self.playerHolder, Vec3(0, 0, -9.81))  # Gravity
 

@@ -2,14 +2,16 @@
 from direct.showbase.ShowBase import ShowBase
 from arcticEnvironment import environment
 from player import Player
+from panda3d.core import loadPrcFile
+loadPrcFile("configuration.prc")
 import simplepbr
 
 class MyApp(ShowBase):
     def __init__(self):
         ShowBase.__init__(self)   # initialise
+        base.set_background_color(0.53,0.81,0.92)
         simplepbr.init(use_normal_maps=True)
         world = environment(self.render,self.loader)
-        self.set_background_color(0.53,0.81,0.92)
         base.setFrameRateMeter(True)
         self.disableMouse()
         self.player = Player(self.camera,self.accept,self.render,self.loader,world.maximumHeight)
