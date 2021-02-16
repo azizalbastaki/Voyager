@@ -2,7 +2,7 @@
 from direct.showbase.ShowBase import ShowBase   # import the bits of panda
 from panda3d.core import TextureStage, AmbientLight
 
-class water(ShowBase):
+class water():
     def __init__(self,render,loader,location,sizeX,sizeY):
         self.water = loader.loadModel('assets/environment/arctic/nature/water.bam')
         self.water.setPos(location)

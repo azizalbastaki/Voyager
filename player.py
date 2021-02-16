@@ -58,7 +58,7 @@ class Player():
         if self.developer == True:
             self.tool = buildingTool("newbuildings",self.playerHolder,loader,accept)
 
-        self.setupLighting() # light
+        #self.setupLighting() # light
         #initial position
         self.playerHolder.setPos(45178.3, 43109.3, 77.2344)
         self.keyMap = {
@@ -187,7 +187,6 @@ class Player():
 
         self.cTrav.traverse(render)
         self.playerHolder.setPos(self.playerHolder, Vec3(0, 0, -9.81))  # Gravity
-
         entries = list(self.groundHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
         if len(entries) > 0:

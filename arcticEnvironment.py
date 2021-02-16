@@ -1,5 +1,5 @@
 #Written by Abdulaziz Albastaki in January 2021
-from panda3d.core import BitMask32, AmbientLight, DirectionalLight
+from panda3d.core import BitMask32, AmbientLight, PointLight, DirectionalLight
 from buildings import dock
 from water import water
 class environment():
@@ -34,5 +34,10 @@ class environment():
         ambiet.setColor((0.2,0.2,0.2,1))
         alight = render.attachNewNode(ambiet)
         render.setLight(alight)
+        dlight = DirectionalLight('dlight')
+        dlight.setColor((0.8, 0.8, 0.8, 1))
+        dlnp = render.attachNewNode(dlight)
+        dlnp.setHpr(0, -45, 0)
+        render.setLight(dlnp)
     def town(self):
         port = dock(self.loader,(45150, 42978.6, 30))
