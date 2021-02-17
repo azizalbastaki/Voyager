@@ -145,7 +145,7 @@ class Player():
             camera.lookAt(self.character)
 
         self.walkConstant = 100 #900
-        self.rotateConstant = 100
+        self.rotateConstant = 500
         #Keyboard controls
         if self.keyMap["forward"]:
             self.playerHolder.setY(self.playerBase, (self.walkConstant*deltaTime))

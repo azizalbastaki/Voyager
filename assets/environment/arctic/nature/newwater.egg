@@ -1,0 +1,58 @@
+<CoordinateSystem> { Z-Up }
+
+<Comment> {
+  "egg-trans -tbnall water.egg"
+}
+<Comment> {
+  "bam2egg water.bam water.egg"
+}
+<VertexPool> nwater.egg {
+  <Vertex> 0 {
+    -0.5 -0.5 0
+    <UV> {
+      1 1
+      <Tangent> { -1 0 0 }
+      <Binormal> { 0 -1 0 }
+    }
+    <Normal> { 0 0 1 }
+    <RGBA> { 1 1 1 1 }
+  }
+  <Vertex> 1 {
+    -0.5 0.5 0
+    <UV> {
+      1 0
+      <Tangent> { -1 0 0 }
+      <Binormal> { 0 -1 0 }
+    }
+    <Normal> { 0 0 1 }
+    <RGBA> { 1 1 1 1 }
+  }
+  <Vertex> 2 {
+    0.5 -0.5 0
+    <UV> {
+      0 1
+      <Tangent> { -1 0 0 }
+      <Binormal> { 0 -1 0 }
+    }
+    <Normal> { 0 0 1 }
+    <RGBA> { 1 1 1 1 }
+  }
+  <Vertex> 3 {
+    0.5 0.5 0
+    <UV> {
+      0 0
+      <Tangent> { -1 0 0 }
+      <Binormal> { 0 -1 0 }
+    }
+    <Normal> { 0 0 1 }
+    <RGBA> { 1 1 1 1 }
+  }
+}
+<Group> plane.egg {
+  <Polygon> {
+    <VertexRef> { 3 1 2 <Ref> { nwater.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 2 1 0 <Ref> { nwater.egg } }
+  }
+}

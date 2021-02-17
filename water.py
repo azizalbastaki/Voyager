@@ -4,12 +4,12 @@ from panda3d.core import TextureStage, AmbientLight
 
 class water():
     def __init__(self,render,loader,location,sizeX,sizeY):
-        self.water = loader.loadModel('assets/environment/arctic/nature/water.bam')
+        self.water = loader.loadModel('assets/environment/arctic/nature/newwater.egg')
         self.water.setPos(location)
         self.water.setSx(sizeX)
         self.water.setSy(sizeY)
         self.newTS = TextureStage('ts')
-        self.normal_TS = TextureStage('normal')
+        self.normal_TS = TextureStage('ts')
         self.normal_TS.setMode(TextureStage.MNormal)
         self.water.setTexture(self.newTS,loader.loadTexture('assets/environment/arctic/nature/textures/water_colormap.jpg'))
         self.water.setTexScale(self.newTS, 40)
@@ -20,5 +20,3 @@ class water():
         alight = self.water.attachNewNode(ambiet)
         self.water.setLight(alight)
         self.water.reparentTo(render)
-
-
