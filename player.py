@@ -22,7 +22,7 @@ class Player():
         props.setMouseMode(WindowProperties.M_relative)
         base.win.requestProperties(props)
 
-        self.character = loader.loadModel('assets/base/models/player.bam')
+        self.character = loader.loadModel('assets/base/models/playerModel/player.bam')
         self.toggleFPCam = False
         self.character.setPos(0,0,0)
         self.character.reparentTo(self.playerHolder)
@@ -31,6 +31,8 @@ class Player():
         camera.reparentTo(self.thirdPersonNode)
         self.mouseSeconds = []
         self.playerHolder.setScale(4)
+        self.monitor = loader.loadModel('assets/base/models/faces/playerMonitor.bam')
+        self.monitor.reparentTo(self.playerHolder)
 
         #Horizontal collisions
         self.pusher = CollisionHandlerPusher()
@@ -44,10 +46,9 @@ class Player():
         self.cTrav = CollisionTraverser()
         self.cTrav.addCollider(collider,self.pusher)
 
-        #Vertical collisions
+        #Vertical collisions - Downwards
         self.groundRay = CollisionRay()
         self.groundRay.setDirection(0, 0, -1)
-        #self.groundRay.setDirection(0, 0, 1)
         self.groundRayCol = CollisionNode('playerRay')
         self.groundRayCol.addSolid(self.groundRay)
         self.groundRayCol.setFromCollideMask(CollideMask.bit(1))
@@ -55,6 +56,18 @@ class Player():
         self.groundColNp = self.playerHolder.attachNewNode(self.groundRayCol)
         self.groundHandler = CollisionHandlerQueue()
         self.cTrav.addCollider(self.groundColNp, self.groundHandler)
+
+        # Vertical collisions - Upwards
+        self.upwardsRay = CollisionRay()
+        self.upwardsRay.setDirection(0, 0, 1)
+        self.upwardsRayCol = CollisionNode('playerupRay')
+        self.upwardsRayCol.addSolid(self.upwardsRay)
+        self.upwardsRayCol.setFromCollideMask(CollideMask.bit(1))
+        self.upwardsRayCol.setIntoCollideMask(CollideMask.allOff())
+        self.upwardsColNp = self.playerHolder.attachNewNode(self.upwardsRayCol)
+        self.upwardsHandler = CollisionHandlerQueue()
+        self.cTrav.addCollider(self.upwardsColNp, self.upwardsHandler)
+
         if self.developer == True:
             self.tool = buildingTool("newbuildings",self.playerHolder,loader,accept)
 
@@ -109,7 +122,6 @@ class Player():
 
     def recenterMouse(self):
         base.win.movePointer(0, int(base.win.getProperties().getXSize() / 2), int(base.win.getProperties().getYSize() / 2))
-
     def setupLighting(self):
         plight = PointLight('plight')
         plight.setColor((1, 1, 1, 1))
@@ -120,46 +132,57 @@ class Player():
         #mouse controls
         if self.toggleFPCam: #first person camera controls
             camera.setPos(self.character.getPos())  # 0,-50,-10
-            #camera.setZ(camera, 20)
-            #props = WindowProperties()
-            #props.setCursorHidden(True)
-            #props.setMouseMode(WindowProperties.M_relative)
-            #base.win.requestProperties(props)
-            self.character.hide()
+            camera.setZ(camera.getZ()+6)
+            self.playerHolder.hide()
 
             if (base.mouseWatcherNode.hasMouse() == True):
                 mouseposition = base.mouseWatcherNode.getMouse()
-                camera.setP(mouseposition.getY() * 30)
-                #self.playerBase.setH(self.playerBase.getH())
-                #camera.setP(mouseposition.getY() * 30)
+                camera.setP(mouseposition.getY()*20)
                 self.playerBase.setH(mouseposition.getX() * -50)
                 if (mouseposition.getX() < 0.1 and mouseposition.getX() > -0.1):
                     self.playerBase.setH(self.playerBase.getH())
-        else: #takes out of first person perspective if toggleFPS is turned off.
-            #props = WindowProperties()
-            #props.setCursorHidden(False)
-            #props.setMouseMode(WindowProperties.M_absolute)
-            #base.win.requestProperties(props)
-            self.character.show()
+            if camera.getP() > 90:
+                self.recenterMouse()
+                camera.setP(90) #TRACK MOUSE
+            elif camera.getP() < -90:
+                self.recenterMouse()
+                camera.setP(-90)
+        else: # takes out of first person perspective if toggleFPS is turned off.
+            self.playerHolder.show()
             camera.setPos(0, -50, -4)  # 0,-50,-10
             camera.lookAt(self.character)
 
-        self.walkConstant = 100 #900
+        self.walkConstant = 100
         self.rotateConstant = 500
-        #Keyboard controls
+        def rotateMonitor():
+            self.monitor.setH(self.playerBase.getH()-90)
+        # Keyboard controls
         if self.keyMap["forward"]:
+            self.monitor.setH(self.playerBase.getH()-90)
             self.playerHolder.setY(self.playerBase, (self.walkConstant*deltaTime))
             self.character.setP(self.character.getP() + (-self.rotateConstant*deltaTime*(math.cos(math.radians(self.playerBase.getH())))))
             self.character.setR(self.character.getR() - (self.rotateConstant*deltaTime*(-math.sin(math.radians(self.playerBase.getH())))))
         if self.keyMap["right"]:
+            self.monitor.setH(self.playerBase.getH()-180)
             self.playerHolder.setX(self.playerBase, (self.walkConstant*deltaTime))
         if self.keyMap["p"]:
             print(self.playerHolder.getPos())
         if self.keyMap["left"]:
+            self.monitor.setH(self.playerBase.getH())
             self.playerHolder.setX(self.playerBase, (-self.walkConstant*deltaTime))
         if self.keyMap["backwards"]:
+            self.monitor.setH(self.playerBase.getH()+90)
             self.playerHolder.setY(self.playerBase, (-self.walkConstant * deltaTime))
             self.character.setP(self.character,(self.rotateConstant*deltaTime))
+        # MONITOR HEADINGS FOR DOUBLE INPUT
+        if self.keyMap["forward"] and self.keyMap["right"]:
+            self.monitor.setH(self.playerBase.getH()-135)
+        elif self.keyMap["forward"] and self.keyMap["left"]:
+            self.monitor.setH(self.playerBase.getH()-45)
+        elif self.keyMap["backwards"] and self.keyMap["left"]:
+            self.monitor.setH(self.playerBase.getH()+45)
+        elif self.keyMap["backwards"] and self.keyMap["right"]:
+            self.monitor.setH(self.playerBase.getH()+135)
 
         if self.keyMap["space"] and self.jetPack_energy>0:
             jetpack = 0.00001*(((self.playerHolder.getZ())-self.maximumHeight)**2)+9.81
@@ -174,23 +197,35 @@ class Player():
                 self.jetPack_energy = 100
             self.jetPack_AUDIO.stop()
         self.HUD.jetpackStatus.text = str(int(self.jetPack_energy))+"%"
-        #third person camera control
-        if (self.toggleFPCam == False): #third person camera controls
+        # third person camera control
+        if (self.toggleFPCam == False): # third person camera controls
             if (base.mouseWatcherNode.hasMouse() == True):
                 mouseposition = base.mouseWatcherNode.getMouse()
                 self.thirdPersonNode.setP(mouseposition.getY() * 30)
-                # self.playerBase.setH(self.playerBase.getH())
-                # camera.setP(mouseposition.getY() * 30)
                 self.playerBase.setH(mouseposition.getX() * -50)
                 if (mouseposition.getX() < 0.1 and mouseposition.getX() > -0.1):
                     self.playerBase.setH(self.playerBase.getH())
-
+            if self.thirdPersonNode.getP() > 90:
+                self.recenterMouse()
+                self.thirdPersonNode.setP(90) # TRACK MOUSE
+            elif self.thirdPersonNode.getP() < -90:
+                self.recenterMouse()
+                self.thirdPersonNode.setP(-90)
         self.cTrav.traverse(render)
         self.playerHolder.setPos(self.playerHolder, Vec3(0, 0, -9.81))  # Gravity
+
+        # checking for collisions - downwards
         entries = list(self.groundHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
         if len(entries) > 0:
             for entry in entries:
                 if (self.playerHolder.getZ()<entry.getSurfacePoint(render).getZ()+8):
                     self.playerHolder.setZ(entry.getSurfacePoint(render).getZ()+8)
+        # checking for collisions - upwards
+        entries = list(self.upwardsHandler.entries)
+        entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
+        if len(entries) > 0:
+            for entry in entries:
+                if (self.playerHolder.getZ() > entry.getSurfacePoint(render).getZ() - 70):
+                    self.playerHolder.setZ(entry.getSurfacePoint(render).getZ() - 130)
         return task.cont

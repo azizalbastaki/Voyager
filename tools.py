@@ -86,25 +86,34 @@ class buildingTool():
         elif (self.keymap["b"] and self.toggle == True) and self.pressedKey == False:
             self.toggleOff()
         if self.toggle == True:
-
-            self.moveFactor = 50
+            def updatePosition():
+                self.positionText.text = "Position: " + str(self.currentGameObject.getPos())
+            def updateSize():
+                self.scaleText.text = "Scale: " + str(self.currentSizeFactor)
+            self.moveFactor = 5
             if self.keymap["up"]:
                 self.setHeight()
-                self.currentGameObject.setX(self.currentGameObject,self.moveFactor*deltatime)
+                self.currentGameObject.setX(self.currentGameObject,self.moveFactor)
+                updatePosition()
             if self.keymap["down"]:
                 self.setHeight()
-                self.currentGameObject.setX(self.currentGameObject,-self.moveFactor*deltatime)
+                self.currentGameObject.setX(self.currentGameObject,-self.moveFactor)
+                updatePosition()
             if self.keymap["left"]:
                 self.setHeight()
-                self.currentGameObject.setY(self.currentGameObject,-self.moveFactor*deltatime)
+                self.currentGameObject.setY(self.currentGameObject,-self.moveFactor)
+                updatePosition()
             if self.keymap["right"]:
                 self.setHeight()
-                self.currentGameObject.setY(self.currentGameObject,self.moveFactor*deltatime)
+                self.currentGameObject.setY(self.currentGameObject,self.moveFactor)
+                updatePosition()
             if self.keymap["sizeup"] and self.pressedKey == False:
                 self.currentSizeFactor+=1
+                updateSize()
                 self.currentGameObject.setScale(self.currentSizeFactor)
             if self.keymap["sizedown"] and self.pressedKey == False:
                 self.currentSizeFactor-=1
+                updateSize()
                 self.currentGameObject.setScale(self.currentSizeFactor)
             if self.keymap["R"] and self.pressedKey==False:
                 self.currentGameObject.setH(self.currentGameObject, 90)
