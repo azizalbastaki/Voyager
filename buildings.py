@@ -6,8 +6,6 @@ class dock():
         self.port = self.loader.loadModel("assets/environment/arctic/buildings/port.bam")
         self.port.setPos(location)
         self.port.setH(90)
-        #self.port.setScale(1)
-        self.port.setPythonTag("ground",self)
         self.port.setCollideMask(BitMask32.bit(1))
         ambiet = AmbientLight('ambient')
         ambiet.setColor((0.2, 0.2, 0.2, 1))

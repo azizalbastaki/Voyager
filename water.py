@@ -11,7 +11,7 @@ class water():
         self.water.setSy(sizeY)
         self.newTS = TextureStage('ts')
         self.normal_TS = TextureStage('tsnormal')
-        #self.normal_TS.setMode(TextureStage.MNormal)
+        self.normal_TS.setMode(TextureStage.MNormal)
         self.water.setTexture(self.newTS,loader.loadTexture('assets/environment/arctic/nature/textures/water_colormap.jpg'))
         self.water.setTexScale(self.newTS, 60)
         self.water.setTexture(self.normal_TS, self.normalmaptexture)

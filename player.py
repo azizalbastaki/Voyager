@@ -21,7 +21,7 @@ class Player():
         props.setCursorHidden(True)
         props.setMouseMode(WindowProperties.M_relative)
         base.win.requestProperties(props)
-
+        self.thirdPersonCamera_ZOOM = -50
         self.character = loader.loadModel('assets/base/models/playerModel/player.bam')
         self.toggleFPCam = False
         self.character.setPos(0,0,0)
@@ -82,7 +82,9 @@ class Player():
             "change_camera": False,
             "leftClick": False,
             "space": False,
-            "p":False
+            "p":False,
+            "scrollup": False,
+            "scrolldown": False
         }
 
         accept("escape", sys.exit)
@@ -100,8 +102,11 @@ class Player():
 
         accept("c",self.updateKey,["change_camera", True])
 
-        accept("mouse1",self.updateKey,["leftClick",True])
-        accept("mouse1-up",self.updateKey,["leftClick",False])
+        accept("wheel_up",self.updateKey,["scrollup",True])
+        #accept("wheel_up-up",self.updateKey,["scrollup",False])
+
+        accept("wheel_down",self.updateKey,["scrolldown",True])
+        #accept("wheel_down-up",self.updateKey,["scrolldown",False])
 
         accept("p", self.updateKey, ["p", True])
         accept("p-up", self.updateKey, ["p", False])
@@ -113,6 +118,11 @@ class Player():
         self.keyMap[key] = value
         if key == "change_camera":
             self.changeCamera()
+        self.scrollFactor = 10
+        if key == "scrollup":
+            self.thirdPersonCamera_ZOOM -= self.scrollFactor
+        if key == "scrolldown":
+            self.thirdPersonCamera_ZOOM += self.scrollFactor
 
     def changeCamera(self):
         if self.toggleFPCam == False:
@@ -149,7 +159,7 @@ class Player():
                 camera.setP(-90)
         else: # takes out of first person perspective if toggleFPS is turned off.
             self.playerHolder.show()
-            camera.setPos(0, -50, -4)  # 0,-50,-10
+            camera.setPos(0, self.thirdPersonCamera_ZOOM, 0)  # 0,-50,-4
             camera.lookAt(self.character)
 
         self.walkConstant = 100
@@ -167,6 +177,7 @@ class Player():
             self.playerHolder.setX(self.playerBase, (self.walkConstant*deltaTime))
         if self.keyMap["p"]:
             print(self.playerHolder.getPos())
+            print(self.thirdPersonCamera_ZOOM)
         if self.keyMap["left"]:
             self.monitor.setH(self.playerBase.getH())
             self.playerHolder.setX(self.playerBase, (-self.walkConstant*deltaTime))
@@ -211,6 +222,11 @@ class Player():
             elif self.thirdPersonNode.getP() < -90:
                 self.recenterMouse()
                 self.thirdPersonNode.setP(-90)
+            if self.thirdPersonCamera_ZOOM > -20:
+                self.thirdPersonCamera_ZOOM = -20
+            elif self.thirdPersonCamera_ZOOM < -390:
+                self.thirdPersonCamera_ZOOM = -390
+
         self.cTrav.traverse(render)
         self.playerHolder.setPos(self.playerHolder, Vec3(0, 0, -9.81))  # Gravity
 
