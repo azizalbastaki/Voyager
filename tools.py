@@ -2,17 +2,21 @@
 from panda3d.core import CollisionRay,CollisionTraverser,CollisionNode,CollideMask,CollisionHandlerQueue
 from direct.gui.DirectGui import DirectFrame
 from direct.gui.DirectGui import OnscreenText
+from objectLib import building1, tree1
 class buildingTool():
     def __init__(self,models,player,loader,accept):
-        self.gameObjects = ["assets/environment/arctic/nature/tree.bam","assets/environment/arctic/buildings/building1.bam"]
+        self.gameObjects = [building1(loader),tree1(loader)]
+        for i in self.gameObjects:
+            i.gameObject.reparentTo(render)
+            i.gameObject.hide()
         self.player = player
         self.loader = loader
         self.setupGUI()
         self.frame.hide()
         self.index = 0
-        self.currentGameObject = loader.loadModel(self.gameObjects[self.index])
-        self.currentGameObject.reparentTo(render)
+        self.currentGameObject = self.gameObjects[self.index].gameObject
         self.currentSizeFactor = 1
+        self.currentGameObject.show()
         self.toggle = False
         self.placedObjects = []
         self.pressedKey = False
@@ -127,13 +131,15 @@ class buildingTool():
                 self.placeObject(self.loader,self.gameObjects,self.index,self.currentGameObject,self.currentSizeFactor)
                 self.pressedKey = True
             if self.keymap["changenext"]:
-                self.currentGameObject = self.loader.unloadModel(self.gameObjects[self.index])
+                self.currentPosition = self.currentGameObject.getPos()
+                self.currentGameObject.hide()
                 self.index+=1
                 if self.index == len(self.gameObjects):
                     self.index = 0
-                self.currentGameObject = self.loader.loadModel(self.gameObjects[self.index])
-                self.currentGameObject.reparentTo(render)
+                self.currentGameObject = self.gameObjects[self.index].gameObject
                 self.currentGameObject.show()
+                self.currentGameObject.setPos(self.currentPosition)
+                self.currentGameObject.setScale(self.currentSizeFactor)
         return task.cont
 
     def setupGUI(self):

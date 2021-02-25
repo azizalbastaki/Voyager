@@ -117,10 +117,10 @@ class Player():
         if key == "change_camera":
             self.changeCamera()
         self.scrollFactor = 10
-        if key == "scrollup":
-            self.thirdPersonCamera_ZOOM -= self.scrollFactor
-        if key == "scrolldown":
+        if key == "scrollup": # third person zoom in/out
             self.thirdPersonCamera_ZOOM += self.scrollFactor
+        if key == "scrolldown":
+            self.thirdPersonCamera_ZOOM -= self.scrollFactor
 
     def changeCamera(self):
         if self.toggleFPCam == False:
@@ -220,7 +220,7 @@ class Player():
             elif self.thirdPersonNode.getP() < -90:
                 self.recenterMouse()
                 self.thirdPersonNode.setP(-90)
-            if self.thirdPersonCamera_ZOOM > -20:
+            if self.thirdPersonCamera_ZOOM > -20: # validate zoom
                 self.thirdPersonCamera_ZOOM = -20
             elif self.thirdPersonCamera_ZOOM < -390:
                 self.thirdPersonCamera_ZOOM = -390
