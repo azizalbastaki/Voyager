@@ -12,3 +12,11 @@ class dock():
         alight = self.port.attachNewNode(ambiet)
         self.port.setLight(alight)
         self.port.reparentTo(render)
+class building1():
+    def __init__(self,loader):
+        self.loader = loader
+        self.gameObject = self.loader.loadModel("assets/environment/arctic/buildings/building1.bam")
+class tree1():
+    def __init__(self,loader):
+        self.loader = loader
+        self.gameObject = self.loader.loadModel("assets/environment/arctic/nature/tree.bam")

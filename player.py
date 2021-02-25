@@ -103,10 +103,8 @@ class Player():
         accept("c",self.updateKey,["change_camera", True])
 
         accept("wheel_up",self.updateKey,["scrollup",True])
-        #accept("wheel_up-up",self.updateKey,["scrollup",False])
 
         accept("wheel_down",self.updateKey,["scrolldown",True])
-        #accept("wheel_down-up",self.updateKey,["scrolldown",False])
 
         accept("p", self.updateKey, ["p", True])
         accept("p-up", self.updateKey, ["p", False])

@@ -4,17 +4,13 @@ from direct.gui.DirectGui import DirectFrame
 from direct.gui.DirectGui import OnscreenText
 class buildingTool():
     def __init__(self,models,player,loader,accept):
+        self.gameObjects = ["assets/environment/arctic/nature/tree.bam","assets/environment/arctic/buildings/building1.bam"]
         self.player = player
         self.loader = loader
-        self.models = open(models,"r") #Open file with all the gameobjects
-        self.gameObjects = []
         self.setupGUI()
         self.frame.hide()
-        for i in self.models:
-            self.gameObjects.append(i)
-        self.models.close()
         self.index = 0
-        self.currentGameObject = self.loader.loadModel(self.gameObjects[0])
+        self.currentGameObject = loader.loadModel(self.gameObjects[self.index])
         self.currentGameObject.reparentTo(render)
         self.currentSizeFactor = 1
         self.toggle = False
@@ -42,7 +38,9 @@ class buildingTool():
             "R": False,
             "sizeup": False,
             "sizedown": False,
-            "P": False
+            "P": False,
+            "changenext": False,
+            "changeprevious": False
         }
         accept("b", self.updateKey, ["b", True])  #
         accept("b-up", self.updateKey, ["b", False])
@@ -70,6 +68,12 @@ class buildingTool():
 
         accept("enter", self.updateKey, ["P", True])
         accept("enter-up", self.updateKey, ["P", False])
+
+        accept(",", self.updateKey, ["changeprevious", True])
+        accept(",-up", self.updateKey, ["changeprevious", False])
+
+        accept(".", self.updateKey, ["changenext", True])
+        accept(".-up", self.updateKey, ["changenext", False])
 
         self.updateTask = taskMgr.add(self.update, "update")
 
@@ -122,6 +126,14 @@ class buildingTool():
             if self.keymap["P"] and self.pressedKey == False:
                 self.placeObject(self.loader,self.gameObjects,self.index,self.currentGameObject,self.currentSizeFactor)
                 self.pressedKey = True
+            if self.keymap["changenext"]:
+                self.currentGameObject = self.loader.unloadModel(self.gameObjects[self.index])
+                self.index+=1
+                if self.index == len(self.gameObjects):
+                    self.index = 0
+                self.currentGameObject = self.loader.loadModel(self.gameObjects[self.index])
+                self.currentGameObject.reparentTo(render)
+                self.currentGameObject.show()
         return task.cont
 
     def setupGUI(self):
@@ -140,6 +152,7 @@ class buildingTool():
             model.setPos(currentGameObject.getPos())
             model.setScale(currentSizeFactor)
             model.setH(currentGameObject.getH())
+            model.flattenStrong()
             model.reparentTo(render)
     def toggleOn(self):
         self.currentGameObject.setPos(self.player.getPos())
