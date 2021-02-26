@@ -1,5 +1,5 @@
 #Written by Abdulaziz Albastaki in February 2021
-from panda3d.core import CollisionRay,CollisionTraverser,CollisionNode,CollideMask,CollisionHandlerQueue
+from panda3d.core import BitMask32,CollisionRay,CollisionTraverser,CollisionNode,CollideMask,CollisionHandlerQueue
 from direct.gui.DirectGui import DirectFrame
 from direct.gui.DirectGui import OnscreenText
 from objectLib import building1, tree1
@@ -95,7 +95,7 @@ class buildingTool():
             self.toggleOff()
         if self.toggle == True:
             def updatePosition():
-                self.positionText.text = "Position: " + str(self.currentGameObject.getPos())
+                self.positionText.text = "Position: " + str(int(self.currentGameObject.getX())) + "," + str(int(self.currentGameObject.getX())) + "," + str(int(self.currentGameObject.getZ()))
             def updateSize():
                 self.scaleText.text = "Scale: " + str(self.currentSizeFactor)
             self.moveFactor = 5
@@ -130,16 +130,25 @@ class buildingTool():
             if self.keymap["P"] and self.pressedKey == False:
                 self.placeObject(self.loader,self.gameObjects,self.index,self.currentGameObject,self.currentSizeFactor)
                 self.pressedKey = True
+            def changeObject():
+                self.currentGameObject = self.gameObjects[self.index].gameObject
+                self.currentGameObject.show()
+                self.currentGameObject.setPos(self.currentPosition)
+                self.currentGameObject.setScale(self.currentSizeFactor)
             if self.keymap["changenext"]:
                 self.currentPosition = self.currentGameObject.getPos()
                 self.currentGameObject.hide()
                 self.index+=1
                 if self.index == len(self.gameObjects):
                     self.index = 0
-                self.currentGameObject = self.gameObjects[self.index].gameObject
-                self.currentGameObject.show()
-                self.currentGameObject.setPos(self.currentPosition)
-                self.currentGameObject.setScale(self.currentSizeFactor)
+                changeObject()
+            if self.keymap["changeprevious"]:
+                self.currentPosition = self.currentGameObject.getPos()
+                self.currentGameObject.hide()
+                self.index-=1
+                if self.index == -1:
+                    self.index = len(self.gameObjects)-1
+                changeObject()
         return task.cont
 
     def setupGUI(self):
@@ -149,16 +158,15 @@ class buildingTool():
         self.devMode = OnscreenText(parent= self.frame, text='DEVELOPER MODE', pos=(0.2, 0.1), scale=0.04, fg=(1,1,1,1))
         self.scaleText = OnscreenText(parent= self.frame, text='Scale: 1', pos=(0.2, 0), scale=0.04, fg=(1,1,1,1))
         self.positionText = OnscreenText(parent= self.frame, text='Position: 0,0,0', pos=(0.2, -0.1), scale=0.04, fg=(1,1,1,1))
-        self.loadedtext = OnscreenText(parent= self.frame, text='Loaded Model:', pos=(0.2, -0.2), scale=0.04, fg=(1,1,1,1))
-        self.loadedModel =  OnscreenText(parent= self.frame, text='assets/environment/arctic/buildings/Townhouse1/Townhouse1.egg', pos=(0.5, -0.3), scale=0.03, fg=(1,1,1,1))
 
     class placeObject():
         def __init__(self,loader,gameObjects,index,currentGameObject,currentSizeFactor):
-            model = loader.loadModel(gameObjects[index])
+            model = loader.loadModel(gameObjects[index].file)
             model.setPos(currentGameObject.getPos())
             model.setScale(currentSizeFactor)
             model.setH(currentGameObject.getH())
-            model.flattenStrong()
+            #model.flattenStrong()
+            model.setCollideMask(BitMask32.bit(1))
             model.reparentTo(render)
     def toggleOn(self):
         self.currentGameObject.setPos(self.player.getPos())

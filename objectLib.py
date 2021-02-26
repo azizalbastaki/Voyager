@@ -14,9 +14,11 @@ class dock():
         self.port.reparentTo(render)
 class building1():
     def __init__(self,loader):
+        self.file = "assets/environment/arctic/buildings/building1.bam"
         self.loader = loader
-        self.gameObject = self.loader.loadModel("assets/environment/arctic/buildings/building1.bam")
+        self.gameObject = self.loader.loadModel(self.file)
 class tree1():
     def __init__(self,loader):
+        self.file = "assets/environment/arctic/nature/tree.bam"
         self.loader = loader
-        self.gameObject = self.loader.loadModel("assets/environment/arctic/nature/tree.bam")
+        self.gameObject = self.loader.loadModel(self.file)

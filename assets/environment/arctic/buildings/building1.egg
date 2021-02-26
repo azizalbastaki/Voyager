@@ -3,6 +3,14 @@
 <Comment> {
   "bam2egg building1.bam building1.egg"
 }
+<Texture> WoodSiding005_2K_Normal {
+  "/Users/azizalbastaki/Desktop/Python/Voyager/assets/environment/arctic/buildings/WoodSiding005_2K_Normal.jpg"
+  <Scalar> format { rgb }
+  <Scalar> wrapu { repeat }
+  <Scalar> wrapv { repeat }
+  <Scalar> envtype { normal }
+  <Scalar> uv-name { 0 }
+}
 <Texture> WoodSiding005_2K_Color {
   "/Users/azizalbastaki/Desktop/Python/Voyager/assets/environment/arctic/buildings/WoodSiding005_2K_Color.jpg"
   <Scalar> format { srgb }
@@ -5098,7 +5106,7 @@
   }
   <Vertex> 830 {
     10.6246099472046 34.4310073852539 1.84663486480713
-    <UV> 0 { -0.413326919078827 -0.0347604751586914 }
+    <UV> 0 { -0.401405036449432 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
@@ -5116,19 +5124,19 @@
   }
   <Vertex> 833 {
     10.6246099472046 35.1354522705078 1.84663486480713
-    <UV> 0 { -0.413326919078827 -0.0347604751586914 }
+    <UV> 0 { -0.401405036449432 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 834 {
     10.6246099472046 35.1354522705078 -0.0865621566772461
-    <UV> 0 { -0.413326859474182 0.232619762420654 }
+    <UV> 0 { -0.401404976844788 0.232619762420654 }
     <Normal> { 0 34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 835 {
     10.6246099472046 35.1354522705078 1.84663486480713
-    <UV> 0 { -0.413326919078827 -0.0347604751586914 }
+    <UV> 0 { -0.401405036449432 -0.0347604751586914 }
     <Normal> { 0 34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
@@ -5146,25 +5154,25 @@
   }
   <Vertex> 838 {
     -55.0587730407715 35.1354522705078 1.84663486480713
-    <UV> 0 { -2.40330767631531 -0.0347604751586914 }
+    <UV> 0 { -2.35562014579773 -0.0347604751586914 }
     <Normal> { -44.1425857543945 20.5786762237549 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 839 {
     -55.0587730407715 35.1354522705078 -0.0865621566772461
-    <UV> 0 { -2.40330743789673 0.232619762420654 }
+    <UV> 0 { -2.35561990737915 0.232619762420654 }
     <Normal> { -44.1425857543945 20.5786762237549 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 840 {
     -55.931282043457 34.4035453796387 -0.0865621566772461
-    <UV> 0 { -2.40330743789673 0.232619762420654 }
+    <UV> 0 { -2.35561990737915 0.232619762420654 }
     <Normal> { -44.1425857543945 20.5786762237549 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 841 {
     -55.931282043457 34.4035453796387 1.84663486480713
-    <UV> 0 { -2.40330767631531 -0.0347604751586914 }
+    <UV> 0 { -2.35562014579773 -0.0347604751586914 }
     <Normal> { -44.1425857543945 20.5786762237549 0 }
     <RGBA> { 1 1 1 1 }
   }
@@ -5182,25 +5190,25 @@
   }
   <Vertex> 844 {
     55.8120269775391 -34.4310073852539 1.84663486480713
-    <UV> 0 { 2.90330743789673 -0.0347604751586914 }
+    <UV> 0 { 2.85561990737915 -0.0347604751586914 }
     <Normal> { 55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 845 {
     55.8120269775391 -34.4310073852539 -0.0865621566772461
-    <UV> 0 { 2.90330743789673 0.232619762420654 }
+    <UV> 0 { 2.85561990737915 0.232619762420654 }
     <Normal> { 55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 846 {
     55.0587730407715 -34.4310073852539 1.84663486480713
-    <UV> 0 { 2.90330743789673 -0.0347604751586914 }
+    <UV> 0 { 2.85561990737915 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 847 {
     55.8120269775391 -34.4310073852539 1.84663486480713
-    <UV> 0 { 2.90330743789673 -0.0347604751586914 }
+    <UV> 0 { 2.85561990737915 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
@@ -5236,217 +5244,217 @@
   }
   <Vertex> 853 {
     0 -34.4310073852539 1.84663486480713
-    <UV> 0 { 4.22996044158936 -0.0347604751586914 }
+    <UV> 0 { 4.15842914581299 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 854 {
     -55.0587730407715 -34.4310073852539 1.84663486480713
-    <UV> 0 { 5.55661487579346 -0.0347604751586914 }
+    <UV> 0 { 5.4612398147583 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 855 {
     -55.0587730407715 -34.9303016662598 1.84663486480713
-    <UV> 0 { 5.55661487579346 -0.0347604751586914 }
+    <UV> 0 { 5.4612398147583 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 856 {
     0 -34.9303016662598 1.84663486480713
-    <UV> 0 { 4.22996044158936 -0.0347604751586914 }
+    <UV> 0 { 4.15842914581299 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 857 {
     -55.8931083679199 -34.4310073852539 1.84663486480713
-    <UV> 0 { 5.55661487579346 -0.0347604751586914 }
+    <UV> 0 { 5.4612398147583 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 858 {
     -55.8931083679199 -34.4943237304688 1.84663486480713
-    <UV> 0 { 5.55661487579346 -0.0347604751586914 }
+    <UV> 0 { 5.4612398147583 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 859 {
     -55.955940246582 -34.4310073852539 -0.0865621566772461
-    <UV> 0 { -5.05661487579346 0.232619762420654 }
+    <UV> 0 { -4.9612398147583 0.232619762420654 }
     <Normal> { -55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 860 {
     -55.955940246582 -34.4310073852539 1.84663486480713
-    <UV> 0 { -5.05661487579346 -0.0347604751586914 }
+    <UV> 0 { -4.9612398147583 -0.0347604751586914 }
     <Normal> { -55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 861 {
     -55.955940246582 34.4310073852539 1.84663486480713
-    <UV> 0 { -2.40330767631531 -0.0347604751586914 }
+    <UV> 0 { -2.35562014579773 -0.0347604751586914 }
     <Normal> { -55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 862 {
     -55.955940246582 34.4310073852539 -0.0865621566772461
-    <UV> 0 { -2.40330743789673 0.232619762420654 }
+    <UV> 0 { -2.35561990737915 0.232619762420654 }
     <Normal> { -55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 863 {
     -55.0587730407715 -34.4310073852539 -0.0865621566772461
-    <UV> 0 { -5.05661487579346 0.232619762420654 }
+    <UV> 0 { -4.9612398147583 0.232619762420654 }
     <Normal> { 0 -34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 864 {
     -55.0587730407715 -34.4310073852539 1.84663486480713
-    <UV> 0 { -5.05661487579346 -0.0347604751586914 }
+    <UV> 0 { -4.9612398147583 -0.0347604751586914 }
     <Normal> { 0 -34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 865 {
     -55.955940246582 -34.4310073852539 1.84663486480713
-    <UV> 0 { -5.05661487579346 -0.0347604751586914 }
+    <UV> 0 { -4.9612398147583 -0.0347604751586914 }
     <Normal> { 0 -34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 866 {
     -55.955940246582 -34.4310073852539 -0.0865621566772461
-    <UV> 0 { -5.05661487579346 0.232619762420654 }
+    <UV> 0 { -4.9612398147583 0.232619762420654 }
     <Normal> { 0 -34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 867 {
     -55.0587730407715 -34.4310073852539 1.84663486480713
-    <UV> 0 { -5.05661487579346 -0.0347604751586914 }
+    <UV> 0 { -4.9612398147583 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 868 {
     -55.0587730407715 34.4310073852539 1.84663486480713
-    <UV> 0 { -2.40330767631531 -0.0347604751586914 }
+    <UV> 0 { -2.35562014579773 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 869 {
     -55.955940246582 34.4310073852539 1.84663486480713
-    <UV> 0 { -2.40330767631531 -0.0347604751586914 }
+    <UV> 0 { -2.35562014579773 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 870 {
     -55.955940246582 -34.4310073852539 1.84663486480713
-    <UV> 0 { -5.05661487579346 -0.0347604751586914 }
+    <UV> 0 { -4.9612398147583 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 871 {
     -55.0587730407715 -34.9303016662598 -0.0865621566772461
-    <UV> 0 { 5.55661487579346 0.232619643211365 }
+    <UV> 0 { 5.4612398147583 0.232619643211365 }
     <Normal> { -35.3044586181641 -26.4210529327393 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 872 {
     -55.0587730407715 -34.9303016662598 1.84663486480713
-    <UV> 0 { 5.55661487579346 -0.0347604751586914 }
+    <UV> 0 { 5.4612398147583 -0.0347604751586914 }
     <Normal> { -35.3044586181641 -26.4210529327393 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 873 {
     -55.8931083679199 -34.4943237304688 1.84663486480713
-    <UV> 0 { 5.55661487579346 -0.0347604751586914 }
+    <UV> 0 { 5.4612398147583 -0.0347604751586914 }
     <Normal> { -35.3044586181641 -26.4210529327393 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 874 {
     -55.8931083679199 -34.4943237304688 -0.0865621566772461
-    <UV> 0 { 5.55661487579346 0.232619643211365 }
+    <UV> 0 { 5.4612398147583 0.232619643211365 }
     <Normal> { -35.3044586181641 -26.4210529327393 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 875 {
     -55.0587730407715 35.1354522705078 1.84663486480713
-    <UV> 0 { -2.40330767631531 -0.0347604751586914 }
+    <UV> 0 { -2.35562014579773 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 876 {
     -55.931282043457 34.4310073852539 1.84663486480713
-    <UV> 0 { -2.40330767631531 -0.0347604751586914 }
+    <UV> 0 { -2.35562014579773 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 877 {
     -55.931282043457 34.4035453796387 1.84663486480713
-    <UV> 0 { -2.40330767631531 -0.0347604751586914 }
+    <UV> 0 { -2.35562014579773 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 878 {
     55.743537902832 -34.4310073852539 -0.0865621566772461
-    <UV> 0 { 2.90330743789673 0.232619762420654 }
+    <UV> 0 { 2.85561990737915 0.232619762420654 }
     <Normal> { 55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 879 {
     55.743537902832 -34.4310073852539 1.84663486480713
-    <UV> 0 { 2.90330743789673 -0.0347604751586914 }
+    <UV> 0 { 2.85561990737915 -0.0347604751586914 }
     <Normal> { 55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 880 {
     55.743537902832 -34.6222610473633 1.84663486480713
-    <UV> 0 { 2.90330743789673 -0.0347604751586914 }
+    <UV> 0 { 2.85561990737915 -0.0347604751586914 }
     <Normal> { 55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 881 {
     55.743537902832 -34.6222610473633 -0.0865621566772461
-    <UV> 0 { 2.90330743789673 0.232619762420654 }
+    <UV> 0 { 2.85561990737915 0.232619762420654 }
     <Normal> { 55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 882 {
     55.0587730407715 -34.9303016662598 1.84663486480713
-    <UV> 0 { 2.90330743789673 -0.0347604751586914 }
+    <UV> 0 { 2.85561990737915 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 883 {
     55.743537902832 -34.6222610473633 1.84663486480713
-    <UV> 0 { 2.90330743789673 -0.0347604751586914 }
+    <UV> 0 { 2.85561990737915 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 884 {
     55.743537902832 -34.4310073852539 1.84663486480713
-    <UV> 0 { 2.90330743789673 -0.0347604751586914 }
+    <UV> 0 { 2.85561990737915 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 885 {
     55.0587730407715 -34.9303016662598 1.84663486480713
-    <UV> 0 { 2.90330743789673 -0.0347604751586914 }
+    <UV> 0 { 2.85561990737915 -0.0347604751586914 }
     <Normal> { 32.152229309082 -27.950439453125 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 886 {
     55.0587730407715 -34.9303016662598 -0.0865621566772461
-    <UV> 0 { 2.90330743789673 0.232619762420654 }
+    <UV> 0 { 2.85561990737915 0.232619762420654 }
     <Normal> { 32.152229309082 -27.950439453125 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 887 {
     55.743537902832 -34.6222610473633 -0.0865621566772461
-    <UV> 0 { 2.90330743789673 0.232619762420654 }
+    <UV> 0 { 2.85561990737915 0.232619762420654 }
     <Normal> { 32.152229309082 -27.950439453125 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 888 {
     55.743537902832 -34.6222610473633 1.84663486480713
-    <UV> 0 { 2.90330743789673 -0.0347604751586914 }
+    <UV> 0 { 2.85561990737915 -0.0347604751586914 }
     <Normal> { 32.152229309082 -27.950439453125 0 }
     <RGBA> { 1 1 1 1 }
   }
@@ -5488,121 +5496,121 @@
   }
   <Vertex> 895 {
     -55.0587730407715 35.1354522705078 -0.0865621566772461
-    <UV> 0 { -2.40330743789673 0.232619762420654 }
+    <UV> 0 { -2.35561990737915 0.232619762420654 }
     <Normal> { 0 34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 896 {
     -55.0587730407715 35.1354522705078 1.84663486480713
-    <UV> 0 { -2.40330767631531 -0.0347604751586914 }
+    <UV> 0 { -2.35562014579773 -0.0347604751586914 }
     <Normal> { 0 34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 897 {
     0 35.1354522705078 1.84663486480713
-    <UV> 0 { -1.07665371894836 -0.0347604751586914 }
+    <UV> 0 { -1.05280995368958 -0.0347604751586914 }
     <Normal> { 0 34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 898 {
     0 35.1354522705078 -0.0865621566772461
-    <UV> 0 { -1.07665383815765 0.232619762420654 }
+    <UV> 0 { -1.05281007289886 0.232619762420654 }
     <Normal> { 0 34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 899 {
     0 34.4310073852539 1.84663486480713
-    <UV> 0 { -1.07665371894836 -0.0347604751586914 }
+    <UV> 0 { -1.05280995368958 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 900 {
     0 35.1354522705078 1.84663486480713
-    <UV> 0 { -1.07665371894836 -0.0347604751586914 }
+    <UV> 0 { -1.05280995368958 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 901 {
     55.0587730407715 -34.9303016662598 -0.0865621566772461
-    <UV> 0 { 2.90330743789673 0.232619762420654 }
+    <UV> 0 { 2.85561990737915 0.232619762420654 }
     <Normal> { 0 -34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 902 {
     55.0587730407715 -34.9303016662598 1.84663486480713
-    <UV> 0 { 2.90330743789673 -0.0347604751586914 }
+    <UV> 0 { 2.85561990737915 -0.0347604751586914 }
     <Normal> { 0 -34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 903 {
     15.1300783157349 -34.9303016662598 1.84663486480713
-    <UV> 0 { 3.56663417816162 -0.0347604751586914 }
+    <UV> 0 { 3.50702500343323 -0.0347604751586914 }
     <Normal> { 0 -34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 904 {
     15.1300783157349 -34.9303016662598 -0.0865621566772461
-    <UV> 0 { 3.56663417816162 0.232619762420654 }
+    <UV> 0 { 3.50702500343323 0.232619762420654 }
     <Normal> { 0 -34.4310073852539 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 905 {
     15.1300783157349 -34.4310073852539 1.84663486480713
-    <UV> 0 { 3.56663417816162 -0.0347604751586914 }
+    <UV> 0 { 3.50702500343323 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 906 {
     15.1300783157349 -34.9303016662598 1.84663486480713
-    <UV> 0 { 3.56663417816162 -0.0347604751586914 }
+    <UV> 0 { 3.50702500343323 -0.0347604751586914 }
     <Normal> { 0 0 12.5980825424194 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 907 {
     15.1300783157349 -34.9303016662598 -0.0865621566772461
-    <UV> 0 { 3.56663417816162 0.232619762420654 }
+    <UV> 0 { 3.50702500343323 0.232619762420654 }
     <Normal> { -55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 908 {
     15.1300783157349 -34.9303016662598 1.84663486480713
-    <UV> 0 { 3.56663417816162 -0.0347604751586914 }
+    <UV> 0 { 3.50702500343323 -0.0347604751586914 }
     <Normal> { -55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 909 {
     15.1300783157349 -34.4310073852539 1.84663486480713
-    <UV> 0 { 3.56663417816162 -0.0347604751586914 }
+    <UV> 0 { 3.50702500343323 -0.0347604751586914 }
     <Normal> { -55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 910 {
     15.1300783157349 -34.4208641052246 -3.814697265625e-05
-    <UV> 0 { -5.05661487579346 1.03476047515869 }
+    <UV> 0 { -4.9612398147583 1.03476047515869 }
     <Normal> { -55.0587730407715 0 0 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 911 {
     0 -34.4310073852539 1.84663486480713
-    <UV> 0 { -5.05661487579346 1.03476047515869 }
+    <UV> 0 { -4.9612398147583 1.03476047515869 }
     <Normal> { 55.0321998596191 1.06494116783142 -0.036822784692049 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 912 {
     0 -34.9303016662598 1.84663486480713
-    <UV> 0 { 4.22996044158936 -0.0347604751586914 }
+    <UV> 0 { 4.15842914581299 -0.0347604751586914 }
     <Normal> { 55.0321998596191 1.06494116783142 -0.036822784692049 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 913 {
     0 -34.9303016662598 -0.0865621566772461
-    <UV> 0 { 4.22996044158936 0.232619643211365 }
+    <UV> 0 { 4.15842914581299 0.232619643211365 }
     <Normal> { 55.0321998596191 1.06494116783142 -0.036822784692049 }
     <RGBA> { 1 1 1 1 }
   }
   <Vertex> 914 {
     -0.0430352762341499 -34.5378341674805 -0.00108051300048828
-    <UV> 0 { -5.05661487579346 1.03476047515869 }
+    <UV> 0 { -4.9612398147583 1.03476047515869 }
     <Normal> { 55.0321998596191 1.06494116783142 -0.036822784692049 }
     <RGBA> { 1 1 1 1 }
   }
@@ -33023,1134 +33031,1134 @@
   <Group> Cube.001 {
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 0 1 2 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 0 2 3 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 4 5 6 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 4 6 7 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 8 9 10 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 8 10 11 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 12 13 14 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 12 14 15 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 16 17 18 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 16 18 19 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 20 21 22 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 20 22 23 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 24 16 25 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 24 25 26 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 27 28 29 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 27 29 30 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 31 24 32 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 31 32 33 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 21 34 35 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 21 35 36 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 37 38 39 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 37 39 40 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 41 42 43 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 41 43 44 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 34 45 46 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 34 46 47 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 48 49 50 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 48 50 51 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 52 53 54 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 52 54 55 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 22 21 56 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 21 57 56 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 32 24 58 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 32 58 59 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 60 61 62 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 60 62 63 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 64 65 66 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 64 66 67 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 34 68 69 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 34 69 45 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 70 71 72 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 70 72 73 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 74 75 76 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 74 76 77 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 78 20 23 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 78 23 79 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 80 81 82 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 80 82 83 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 84 85 86 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 84 86 87 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 16 78 79 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 16 79 17 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 68 31 33 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 68 33 69 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 88 89 90 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 88 90 91 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 92 93 94 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 92 94 95 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 96 97 98 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 99 100 96 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 98 99 96 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 101 102 103 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 101 103 104 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 105 106 107 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 108 109 105 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 107 108 105 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 110 111 112 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 110 112 113 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 114 115 116 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 114 116 117 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 118 119 120 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 119 121 120 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 122 123 124 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 122 124 125 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 126 127 128 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 126 128 129 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 130 131 132 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 131 133 132 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 134 135 136 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 134 136 137 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 138 139 140 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 138 140 141 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 81 142 143 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 81 143 82 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 144 145 146 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 144 146 147 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 148 149 150 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 148 150 151 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 142 152 153 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 142 153 143 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 154 155 156 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 154 156 157 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 158 159 160 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 158 160 161 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 162 163 164 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 162 164 165 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 163 148 151 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 163 151 164 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 166 167 168 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 166 168 169 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 170 171 172 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 170 172 173 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 174 175 176 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 174 176 177 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 178 179 179 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 178 179 178 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 180 181 181 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 180 181 180 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 123 182 183 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 123 183 124 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 124 183 184 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 124 184 135 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 135 184 185 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 135 185 136 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 186 187 188 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 186 188 189 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 190 191 192 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 190 192 193 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 194 195 196 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 194 196 197 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 198 80 83 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 198 83 199 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 200 201 202 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 200 202 203 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 204 198 199 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 204 199 205 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 182 130 183 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 130 132 183 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 206 126 129 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 206 129 207 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 184 118 185 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 118 120 185 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 187 114 117 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 187 117 208 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 209 210 211 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 209 211 212 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 213 214 215 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 215 216 217 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 218 219 213 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 215 217 218 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 215 218 213 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 220 221 222 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 222 223 224 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 225 226 220 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 222 224 225 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 222 225 220 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 227 228 229 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 227 229 230 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 231 232 233 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 231 233 234 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 235 236 237 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 235 237 238 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 239 240 241 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 235 238 242 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 242 239 241 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 242 241 235 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 243 244 245 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 243 245 246 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 247 248 249 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 243 246 250 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 250 247 249 <Ref> { Scene } }
     }
     <Polygon> {
       <TRef> { WoodSiding005_2K_Color }
-      <TRef> { Bricks040_2K_Normal }
+      <TRef> { WoodSiding005_2K_Normal }
       <MRef> { Material.004 }
       <BFace> { 1 }
       <VertexRef> { 249 243 250 <Ref> { Scene } }

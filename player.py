@@ -33,17 +33,17 @@ class Player():
         self.playerHolder.setScale(4)
         self.monitor = loader.loadModel('assets/base/models/faces/playerMonitor.bam')
         self.monitor.reparentTo(self.playerHolder)
-
+        self.cTrav = CollisionTraverser()
         #Horizontal collisions
         self.pusher = CollisionHandlerPusher()
-        self.pusher.setHorizontal(True)
+        self.pusher.horizontal = True
         self.colliderNode = CollisionNode("player")
         self.colliderNode.addSolid(CollisionSphere(0, 0, 0, 1))
-        self.colliderNode.setFromCollideMask(CollideMask.bit(0))
+        self.colliderNode.setFromCollideMask(CollideMask.bit(1))
         self.colliderNode.setIntoCollideMask(BitMask32.allOff())
         collider = self.playerHolder.attachNewNode(self.colliderNode)
-        self.pusher.addCollider(collider,self.playerHolder)
-        self.cTrav = CollisionTraverser()
+        collider.show()
+        self.pusher.addCollider(collider, self.playerHolder)
         self.cTrav.addCollider(collider,self.pusher)
 
         #Vertical collisions - Downwards
@@ -160,7 +160,7 @@ class Player():
             camera.setPos(0, self.thirdPersonCamera_ZOOM, 0)  # 0,-50,-4
             camera.lookAt(self.character)
 
-        self.walkConstant = 100
+        self.walkConstant = 40
         self.rotateConstant = 500
         def rotateMonitor():
             self.monitor.setH(self.playerBase.getH()-90)
