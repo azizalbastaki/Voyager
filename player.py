@@ -13,6 +13,7 @@ class Player():
         self.maximumHeight = maxJPHeight
         self.jetPack_AUDIO = loader.loadSfx("assets/base/sounds/jetpack2.wav")
         self.jetPack_AUDIO.setLoop(True)
+        self.velocity = 0
         #initiate GUI
         self.HUD = GUI()
         self.playerHolder = render.attachNewNode('player')
@@ -73,7 +74,7 @@ class Player():
 
         #self.setupLighting() # light
         #initial position
-        self.playerHolder.setPos(45178.3, 43109.3, 77.2344)
+        self.playerHolder.setPos(45178.3, 43109.3, 0)
         self.keyMap = {
             "left": False,
             "right": False,
@@ -226,20 +227,27 @@ class Player():
                 self.thirdPersonCamera_ZOOM = -390
 
         self.cTrav.traverse(render)
-        self.playerHolder.setPos(self.playerHolder, Vec3(0, 0, -9.81))  # Gravity
 
         # checking for collisions - downwards
         entries = list(self.groundHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
-        if len(entries) > 0:
-            for entry in entries:
-                if (self.playerHolder.getZ()<entry.getSurfacePoint(render).getZ()+8):
-                    self.playerHolder.setZ(entry.getSurfacePoint(render).getZ()+8)
+        do = False
+        self.performGravity = False
+        if self.performGravity == True:
+            self.velocity -= (deltaTime*9.81)
+            if self.velocity <= -15:
+                self.velocity = -15
+            self.playerHolder.setPos(self.playerHolder, Vec3(0, 0, self.velocity))  # Gravity
+        if len(entries) > 0 and do:
+            if (self.playerHolder.getZ()<entries[-1].getSurfacePoint(render).getZ()+8):
+                self.playerHolder.setZ(entries[-1].getSurfacePoint(render).getZ()+8)
+                self.velocity = 0
         # checking for collisions - upwards
         entries = list(self.upwardsHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
-        if len(entries) > 0:
+        if len(entries) > 0 and do:
             for entry in entries:
                 if (self.playerHolder.getZ() > entry.getSurfacePoint(render).getZ() - 70):
                     self.playerHolder.setZ(entry.getSurfacePoint(render).getZ() - 130)
+
         return task.cont
