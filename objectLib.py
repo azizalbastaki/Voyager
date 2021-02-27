@@ -14,7 +14,7 @@ class dock():
         self.port.reparentTo(render)
 class building1():
     def __init__(self,loader):
-        self.file = "assets/environment/arctic/buildings/building1.bam"
+        self.file = "assets/environment/arctic/buildings/mew.egg"
         self.loader = loader
         self.gameObject = self.loader.loadModel(self.file)
 class tree1():

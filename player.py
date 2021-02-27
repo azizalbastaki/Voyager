@@ -39,8 +39,9 @@ class Player():
         self.pusher = CollisionHandlerPusher()
         self.pusher.horizontal = True
         self.colliderNode = CollisionNode("player")
-        self.colliderNode.addSolid(CollisionSphere(0, 0, 0, 3))
+        self.colliderNode.addSolid(CollisionSphere(0, 0, 0, 4))
         self.colliderNode.setFromCollideMask(CollideMask.bit(1))
+        self.colliderNode.setFromCollideMask(CollideMask.bit(0))
         self.colliderNode.setIntoCollideMask(BitMask32.allOff())
         collider = self.playerHolder.attachNewNode(self.colliderNode)
         collider.show()
@@ -233,21 +234,20 @@ class Player():
         # checking for collisions - downwards
         entries = list(self.groundHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
-        do = False
-        self.performGravity = False
+        self.performGravity = True
         if self.performGravity == True:
             self.velocity -= (deltaTime*9.81)
             if self.velocity <= -15:
                 self.velocity = -15
             self.playerHolder.setPos(self.playerHolder, Vec3(0, 0, self.velocity))  # Gravity
-        if len(entries) > 0 and do:
+        if len(entries) > 0:
             if (self.playerHolder.getZ()<entries[-1].getSurfacePoint(render).getZ()+8):
                 self.playerHolder.setZ(entries[-1].getSurfacePoint(render).getZ()+8)
                 self.velocity = 0
         # checking for collisions - upwards
         entries = list(self.upwardsHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
-        if len(entries) > 0 and do:
+        if len(entries) > 0:
             for entry in entries:
                 if (self.playerHolder.getZ() > entry.getSurfacePoint(render).getZ() - 70):
                     self.playerHolder.setZ(entry.getSurfacePoint(render).getZ() - 130)

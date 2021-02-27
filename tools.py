@@ -184,4 +184,4 @@ class buildingTool():
         entries = list(self.groundHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
         for entry in entries:
-            self.currentGameObject.setZ(entry.getSurfacePoint(render).getZ() + 1)
+            self.currentGameObject.setZ(entry.getSurfacePoint(render).getZ() + 20)
