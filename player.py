@@ -39,7 +39,7 @@ class Player():
         self.pusher = CollisionHandlerPusher()
         self.pusher.horizontal = True
         self.colliderNode = CollisionNode("player")
-        self.colliderNode.addSolid(CollisionSphere(0, 0, 0, 1))
+        self.colliderNode.addSolid(CollisionSphere(0, 0, 0, 3))
         self.colliderNode.setFromCollideMask(CollideMask.bit(1))
         self.colliderNode.setIntoCollideMask(BitMask32.allOff())
         collider = self.playerHolder.attachNewNode(self.colliderNode)
@@ -68,6 +68,8 @@ class Player():
         self.upwardsColNp = self.playerHolder.attachNewNode(self.upwardsRayCol)
         self.upwardsHandler = CollisionHandlerQueue()
         self.cTrav.addCollider(self.upwardsColNp, self.upwardsHandler)
+        #self.cTrav.showCollisions(render)
+
 
         if self.developer == True:
             self.tool = buildingTool("newbuildings",self.playerHolder,loader,accept)
