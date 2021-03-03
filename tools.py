@@ -2,10 +2,10 @@
 from panda3d.core import BitMask32,CollisionRay,CollisionTraverser,CollisionNode,CollideMask,CollisionHandlerQueue
 from direct.gui.DirectGui import DirectFrame
 from direct.gui.DirectGui import OnscreenText
-from objectLib import building1, tree1
+from objectLib import building1, tree1, collisions
 class buildingTool():
     def __init__(self,models,player,loader,accept):
-        self.gameObjects = [building1(loader),tree1(loader)]
+        self.gameObjects = [building1(loader),tree1(loader),collisions(loader)]
         for i in self.gameObjects:
             i.gameObject.reparentTo(render)
             i.gameObject.hide()
@@ -166,7 +166,7 @@ class buildingTool():
             model.setScale(currentSizeFactor)
             model.setH(currentGameObject.getH())
             #model.flattenStrong()
-            model.setCollideMask(BitMask32.bit(1))
+            model.setCollideMask(BitMask32.bit(0))
             model.reparentTo(render)
     def toggleOn(self):
         self.currentGameObject.setPos(self.player.getPos())
@@ -184,4 +184,4 @@ class buildingTool():
         entries = list(self.groundHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
         for entry in entries:
-            self.currentGameObject.setZ(entry.getSurfacePoint(render).getZ() + 20)
+            self.currentGameObject.setZ(entry.getSurfacePoint(render).getZ() + 1)
