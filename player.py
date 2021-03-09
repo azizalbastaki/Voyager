@@ -39,7 +39,7 @@ class Player():
         self.pusher = CollisionHandlerPusher()
         self.pusher.horizontal = True
         self.colliderNode = CollisionNode("player")
-        self.colliderNode.addSolid(CollisionSphere(0, 0, 0, 4))
+        self.colliderNode.addSolid(CollisionSphere(0, 0, 0, 2))
         self.colliderNode.setFromCollideMask(CollideMask.bit(1))
         self.colliderNode.setFromCollideMask(CollideMask.bit(0))
         self.colliderNode.setIntoCollideMask(BitMask32.allOff())

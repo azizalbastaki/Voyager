@@ -13,6 +13,7 @@ class buildingTool():
         self.loader = loader
         self.setupGUI()
         self.frame.hide()
+        self.rotation = 0
         self.index = 0
         self.currentGameObject = self.gameObjects[self.index].gameObject
         self.currentSizeFactor = 1
@@ -125,6 +126,7 @@ class buildingTool():
                 self.currentGameObject.setScale(self.currentSizeFactor)
             if self.keymap["R"] and self.pressedKey==False:
                 self.currentGameObject.setH(self.currentGameObject, 90)
+                self.rotation = self.currentGameObject.getH()
                 self.pressedKey = True
                 self.setHeight()
             if self.keymap["P"] and self.pressedKey == False:
@@ -135,6 +137,7 @@ class buildingTool():
                 self.currentGameObject.show()
                 self.currentGameObject.setPos(self.currentPosition)
                 self.currentGameObject.setScale(self.currentSizeFactor)
+                self.currentGameObject.setH(self.rotation)
             if self.keymap["changenext"]:
                 self.currentPosition = self.currentGameObject.getPos()
                 self.currentGameObject.hide()
@@ -168,6 +171,9 @@ class buildingTool():
             #model.flattenStrong()
             model.setCollideMask(BitMask32.bit(0))
             model.reparentTo(render)
+            file = open("newbuildings","a")
+            file.write(str(gameObjects[index].name))
+            file.close()
     def toggleOn(self):
         self.currentGameObject.setPos(self.player.getPos())
         self.currentGameObject.setX(self.player,10)
