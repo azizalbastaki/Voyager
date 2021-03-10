@@ -1,1 +1,11 @@
-building1tree1building1tree1
+
+self.building19142 = self.loader.loadModel('assets/environment/arctic/buildings/building1.bam')
+
+self.tree1427 = self.loader.loadModel('assets/environment/arctic/nature/tree.bam')
+
+self.building17295 = self.loader.loadModel('assets/environment/arctic/buildings/building1.bam')
+self.building17295.setScale(1)
+self.building17295.setPos(45233.30078125, 43109.30078125, -9.174566268920898
+self.tree18500 = self.loader.loadModel('assets/environment/arctic/nature/tree.bam')
+self.tree18500.setScale(7)
+self.tree18500.setPos(45113.30078125, 43109.30078125, -9.174566268920898

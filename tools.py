@@ -2,6 +2,7 @@
 from panda3d.core import BitMask32,CollisionRay,CollisionTraverser,CollisionNode,CollideMask,CollisionHandlerQueue
 from direct.gui.DirectGui import DirectFrame
 from direct.gui.DirectGui import OnscreenText
+from random import randint
 from objectLib import building1, tree1, collisions
 class buildingTool():
     def __init__(self,models,player,loader,accept):
@@ -13,6 +14,7 @@ class buildingTool():
         self.loader = loader
         self.setupGUI()
         self.frame.hide()
+
         self.rotation = 0
         self.index = 0
         self.currentGameObject = self.gameObjects[self.index].gameObject
@@ -164,7 +166,8 @@ class buildingTool():
 
     class placeObject():
         def __init__(self,loader,gameObjects,index,currentGameObject,currentSizeFactor):
-            model = loader.loadModel(gameObjects[index].file)
+            object = gameObjects[index]
+            model = loader.loadModel(object.file)
             model.setPos(currentGameObject.getPos())
             model.setScale(currentSizeFactor)
             model.setH(currentGameObject.getH())
@@ -172,7 +175,12 @@ class buildingTool():
             model.setCollideMask(BitMask32.bit(0))
             model.reparentTo(render)
             file = open("newbuildings","a")
-            file.write(str(gameObjects[index].name))
+            self.objectNumber = str(randint(0,9999))
+            self.variableName = "self."+ str(object.name) + self.objectNumber
+            code = "\n" + self.variableName + " = self.loader.loadModel('" + object.file + "')"
+            code += "\n" + self.variableName + ".setScale(" + str(currentSizeFactor) + ")"
+            code += "\n" + self.variableName + ".setPos(" + str(currentGameObject.getX())+ ", " +str(currentGameObject.getY()) + ", " + str(currentGameObject.getZ())
+            file.write(code)
             file.close()
     def toggleOn(self):
         self.currentGameObject.setPos(self.player.getPos())
