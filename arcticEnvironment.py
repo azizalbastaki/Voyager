@@ -29,6 +29,38 @@ class environment():
         self.town()
         self.setupLights()
 
+        def generatedMap():
+            self.building16909 = self.loader.loadModel('assets/environment/arctic/buildings/building1.bam')
+            self.building16909.setScale(3)
+            self.building16909.setPos(45938.30078125, 43149.30078125, -9.174566268920898)
+            self.building16909.setH(-89.99999237060547)
+            self.building16909.reparentTo(render)
+
+            self.building11699 = self.loader.loadModel('assets/environment/arctic/buildings/building1.bam')
+            self.building11699.setScale(3)
+            self.building11699.setPos(45938.30078125, 42579.30078125, -9.174566268920898)
+            self.building11699.setH(-89.99999237060547)
+            self.building11699.reparentTo(render)
+
+            self.tree17425 = self.loader.loadModel('assets/environment/arctic/nature/tree.bam')
+            self.tree17425.setScale(12)
+            self.tree17425.setPos(45818.30078125, 42774.30078125, -9.174566268920898)
+            self.tree17425.setH(-89.99999237060547)
+            self.tree17425.reparentTo(render)
+
+            self.tree18761 = self.loader.loadModel('assets/environment/arctic/nature/tree.bam')
+            self.tree18761.setScale(12)
+            self.tree18761.setPos(45818.30078125, 42894.30078125, -9.174566268920898)
+            self.tree18761.setH(-89.99999237060547)
+            self.tree18761.reparentTo(render)
+
+            self.tree19412 = self.loader.loadModel('assets/environment/arctic/nature/tree.bam')
+            self.tree19412.setScale(12)
+            self.tree19412.setPos(45938.30078125, 42834.30078125, -9.174566268920898)
+            self.tree19412.setH(-89.99999237060547)
+            self.tree19412.reparentTo(render)
+        generatedMap()
+
     def setupLights(self):
         ambiet = AmbientLight('ambient')
         ambiet.setColor((0.2,0.2,0.2,1))

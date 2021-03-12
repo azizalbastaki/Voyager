@@ -171,7 +171,7 @@ class buildingTool():
             model.setPos(currentGameObject.getPos())
             model.setScale(currentSizeFactor)
             model.setH(currentGameObject.getH())
-            #model.flattenStrong()
+
             model.setCollideMask(BitMask32.bit(0))
             model.reparentTo(render)
             file = open("newbuildings","a")
@@ -179,7 +179,14 @@ class buildingTool():
             self.variableName = "self."+ str(object.name) + self.objectNumber
             code = "\n" + self.variableName + " = self.loader.loadModel('" + object.file + "')"
             code += "\n" + self.variableName + ".setScale(" + str(currentSizeFactor) + ")"
-            code += "\n" + self.variableName + ".setPos(" + str(currentGameObject.getX())+ ", " +str(currentGameObject.getY()) + ", " + str(currentGameObject.getZ())
+            code += "\n" + self.variableName + ".setPos(" + str(currentGameObject.getX())+ ", " +str(currentGameObject.getY()) + ", " + str(currentGameObject.getZ()) + ")"
+            code += "\n" + self.variableName + ".setH(" + str(currentGameObject.getH()) + ")"
+            try:
+                if "hide" in object.otherCommands:
+                    code += "\n" + self.variableName + ".hide()"
+            except:
+                pass
+            code += "\n" + self.variableName + '.reparentTo(render)\n'
             file.write(code)
             file.close()
     def toggleOn(self):
