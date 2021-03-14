@@ -180,6 +180,10 @@ class buildingTool():
             code = "\n" + self.variableName + " = self.loader.loadModel('" + object.file + "')"
             code += "\n" + self.variableName + ".setScale(" + str(currentSizeFactor) + ")"
             code += "\n" + self.variableName + ".setPos(" + str(currentGameObject.getX())+ ", " +str(currentGameObject.getY()) + ", " + str(currentGameObject.getZ()) + ")"
+            try:
+                code += "\n" + self.variableName + ".setCollideMask(BitMask32.bit(" + str(object.bitmask) + "))"
+            except:
+                pass
             code += "\n" + self.variableName + ".setH(" + str(currentGameObject.getH()) + ")"
             try:
                 if "hide" in object.otherCommands:
