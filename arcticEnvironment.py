@@ -30,27 +30,7 @@ class environment():
         self.setupLights()
 
         def generatedMap():
-            self.building18297 = self.loader.loadModel('assets/environment/arctic/buildings/building1.bam')
-            self.building18297.setScale(4)
-            self.building18297.setPos(45398.30078125, 43389.30078125, -9.174566268920898)
-            self.building18297.setCollideMask(BitMask32.bit(4))
-            self.building18297.setH(0.0)
-            self.building18297.reparentTo(render)
-
-            self.building1_collision8664 = self.loader.loadModel(
-                'assets/environment/arctic/buildings/building1collision.bam')
-            self.building1_collision8664.setScale(4)
-            self.building1_collision8664.setPos(45398.30078125, 43389.30078125, -9.174566268920898)
-            self.building1_collision8664.setCollideMask(BitMask32.bit(0))
-            self.building1_collision8664.setH(0.0)
-            self.building1_collision8664.hide()
-            self.building1_collision8664.reparentTo(render)
-
-            self.tree12698 = self.loader.loadModel('assets/environment/arctic/nature/tree.bam')
-            self.tree12698.setScale(22)
-            self.tree12698.setPos(45884.0, 43433.58203125, -9.174566268920898)
-            self.tree12698.setH(0.0)
-            self.tree12698.reparentTo(render)
+            pass
         generatedMap()
 
     def setupLights(self):

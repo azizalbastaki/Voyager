@@ -33,3 +33,10 @@ class tree1():
         self.file = "assets/environment/arctic/nature/tree.bam"
         self.loader = loader
         self.gameObject = self.loader.loadModel(self.file)
+class walkway1():
+    def __init__(self,loader):
+        self.name = "walkway1"
+        self.file = "assets/environment/arctic/buildings/walkway.bam"
+        self.loader = loader
+        self.bitmask = 4
+        self.gameObject = self.loader.loadModel(self.file)
