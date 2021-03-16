@@ -24,3 +24,5 @@ class water():
         self.skybox.setPos(location)
         self.skybox.setScale(2000)
         self.skybox.reparentTo(render)
+    def animate(self):
+        pass
