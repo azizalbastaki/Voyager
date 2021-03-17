@@ -13,7 +13,10 @@ class Player():
         self.maximumHeight = maxJPHeight
         self.jetPack_AUDIO = loader.loadSfx("assets/base/sounds/jetpack2.wav")
         self.jetPack_AUDIO.setLoop(True)
-        self.velocity = 0
+        self.vertical_velocity = 0
+        self.z_velocity = 0
+        self.movingZ = False
+        self.movingX = False
         #initiate GUI
         self.HUD = GUI()
         self.playerHolder = render.attachNewNode('player')
@@ -141,6 +144,7 @@ class Player():
         render.setLight(plnp)
     def playerUpdate(self,task): #our UPDATE TASK
         deltaTime = globalClock.getDt()
+        self.movingZ = False
         #mouse controls
         if self.toggleFPCam: #first person camera controls
             camera.setPos(self.character.getPos())  # 0,-50,-10
@@ -170,10 +174,12 @@ class Player():
             self.monitor.setH(self.playerBase.getH()-90)
         # Keyboard controls
         if self.keyMap["forward"]:
-            self.monitor.setH(self.playerBase.getH()-90)
-            self.playerHolder.setY(self.playerBase, (self.walkConstant*deltaTime))
-            self.character.setP(self.character.getP() + (-self.rotateConstant*deltaTime*(math.cos(math.radians(self.playerBase.getH())))))
-            self.character.setR(self.character.getR() - (self.rotateConstant*deltaTime*(-math.sin(math.radians(self.playerBase.getH())))))
+            self.monitor.setH(self.playerBase.getH() - 90)
+            self.movingZ = True
+            self.z_velocity += 20
+            if self.z_velocity > self.walkConstant:
+                self.z_velocity = self.walkConstant
+
         if self.keyMap["right"]:
             self.monitor.setH(self.playerBase.getH()-180)
             self.playerHolder.setX(self.playerBase, (self.walkConstant*deltaTime))
@@ -184,9 +190,17 @@ class Player():
             self.monitor.setH(self.playerBase.getH())
             self.playerHolder.setX(self.playerBase, (-self.walkConstant*deltaTime))
         if self.keyMap["backwards"]:
-            self.monitor.setH(self.playerBase.getH()+90)
-            self.playerHolder.setY(self.playerBase, (-self.walkConstant * deltaTime))
-            self.character.setP(self.character,(self.rotateConstant*deltaTime))
+            self.monitor.setH(self.playerBase.getH() + 90)
+            self.movingZ = True
+            self.z_velocity -= 20
+            if self.z_velocity < -self.walkConstant:
+                self.z_velocity = -self.walkConstant
+
+        if self.movingZ == False:
+            if self.z_velocity > 0:
+                self.z_velocity -= 10
+            elif self.z_velocity < 0:
+                self.z_velocity += 10
         # MONITOR HEADINGS FOR DOUBLE INPUT
         if self.keyMap["forward"] and self.keyMap["right"]:
             self.monitor.setH(self.playerBase.getH()-135)
@@ -229,6 +243,11 @@ class Player():
             elif self.thirdPersonCamera_ZOOM < -390:
                 self.thirdPersonCamera_ZOOM = -390
 
+        # movement updates
+        self.playerHolder.setY(self.playerBase, (self.z_velocity * deltaTime))
+        #self.character.setP(self.character.getP() + (self.z_velocity * deltaTime * (math.cos(math.radians(self.playerBase.getH())))))
+        #self.character.setR(self.character.getR() - (self.z_velocity * deltaTime * (-math.sin(math.radians(self.playerBase.getH())))))
+        self.character.setHpr(self.character,0,self.z_velocity *-5 *deltaTime * (math.cos(math.radians(self.playerBase.getH()))),(self.z_velocity * deltaTime *5* (-math.sin(math.radians(self.playerBase.getH())))))
         self.cTrav.traverse(render)
 
         # checking for collisions - downwards
@@ -236,14 +255,14 @@ class Player():
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
         self.performGravity = True
         if self.performGravity == True:
-            self.velocity -= (deltaTime*9.81)
-            if self.velocity <= -15:
-                self.velocity = -15
-            self.playerHolder.setPos(self.playerHolder, Vec3(0, 0, self.velocity))  # Gravity
+            self.vertical_velocity -= (deltaTime * 9.81)
+            if self.vertical_velocity <= -15:
+                self.vertical_velocity = -15
+            self.playerHolder.setPos(self.playerHolder, Vec3(0, 0, self.vertical_velocity))  # Gravity
         if len(entries) > 0:
             if (self.playerHolder.getZ()<entries[-1].getSurfacePoint(render).getZ()+8):
                 self.playerHolder.setZ(entries[-1].getSurfacePoint(render).getZ()+8)
-                self.velocity = 0
+                self.vertical_velocity = 0
         # checking for collisions - upwards
         entries = list(self.upwardsHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())

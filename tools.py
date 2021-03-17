@@ -14,7 +14,9 @@ class buildingTool():
         self.loader = loader
         self.setupGUI()
         self.frame.hide()
-
+        self.resetFile = open("newbuildings","w")
+        self.resetFile.write("")
+        self.resetFile.close()
         self.rotation = 0
         self.index = 0
         self.currentGameObject = self.gameObjects[self.index].gameObject
@@ -188,6 +190,11 @@ class buildingTool():
             try:
                 if "hide" in object.otherCommands:
                     code += "\n" + self.variableName + ".hide()"
+            except:
+                pass
+            try:
+                if "flattenStrong" in object.otherCommands:
+                    code += "\n" + self.variableName + ".flattenStrong()"
             except:
                 pass
             code += "\n" + self.variableName + '.reparentTo(render)\n'

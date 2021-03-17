@@ -26,12 +26,14 @@ class building1():
         self.file = "assets/environment/arctic/buildings/building1.bam"
         self.loader = loader
         self.bitmask = 4
+        self.otherCommands = ["flattenStrong"]
         self.gameObject = self.loader.loadModel(self.file)
 class tree1():
     def __init__(self,loader):
         self.name = "tree1"
         self.file = "assets/environment/arctic/nature/tree.bam"
         self.loader = loader
+        self.otherCommands = ["flattenStrong"]
         self.gameObject = self.loader.loadModel(self.file)
 class walkway1():
     def __init__(self,loader):
@@ -39,4 +41,5 @@ class walkway1():
         self.file = "assets/environment/arctic/buildings/walkway.bam"
         self.loader = loader
         self.bitmask = 4
+        self.otherCommands = ["flattenStrong"]
         self.gameObject = self.loader.loadModel(self.file)
