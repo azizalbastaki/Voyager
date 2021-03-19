@@ -245,9 +245,11 @@ class Player():
 
         # movement updates
         self.playerHolder.setY(self.playerBase, (self.z_velocity * deltaTime))
-        #self.character.setP(self.character.getP() + (self.z_velocity * deltaTime * (math.cos(math.radians(self.playerBase.getH())))))
-        #self.character.setR(self.character.getR() - (self.z_velocity * deltaTime * (-math.sin(math.radians(self.playerBase.getH())))))
-        self.character.setHpr(self.character,0,self.z_velocity *-5 *deltaTime * (math.cos(math.radians(self.playerBase.getH()))),(self.z_velocity * deltaTime *5* (-math.sin(math.radians(self.playerBase.getH())))))
+        self.quat = self.playerBase.getQuat()
+        self.forwardQuat = self.quat.getRight()[0]
+        self.rightQuat = self.quat.getForward()[0]
+        # ,self.z_velocity*-10*deltaTime * self.forwardQuat
+        self.character.setHpr(self.character,0,self.z_velocity*-10*deltaTime * self.forwardQuat,self.z_velocity*10*deltaTime * self.rightQuat)
         self.cTrav.traverse(render)
 
         # checking for collisions - downwards
