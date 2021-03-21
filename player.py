@@ -1,6 +1,6 @@
 #Written by Abdulaziz Albastaki in January 2021
 import sys
-from panda3d.core import Vec3,DirectionalLight,PointLight,CollisionHandlerQueue,CollisionRay, WindowProperties, CollisionTraverser, CollisionHandlerPusher, CollisionSphere, CollisionNode, CollideMask, BitMask32
+from panda3d.core import Vec3,Quat,PointLight,CollisionHandlerQueue,CollisionRay, WindowProperties, CollisionTraverser, CollisionHandlerPusher, CollisionSphere, CollisionNode, CollideMask, BitMask32
 import math
 from playerGUI import GUI
 from tools import buildingTool
@@ -245,13 +245,16 @@ class Player():
 
         # movement updates
         self.playerHolder.setY(self.playerBase, (self.z_velocity * deltaTime))
-        self.quat = self.playerBase.getQuat()
-        self.forwardQuat = self.quat.getRight()[0]
-        self.rightQuat = self.quat.getForward()[0]
-        # ,self.z_velocity*-10*deltaTime * self.forwardQuat
-        self.character.setHpr(self.character,0,self.z_velocity*-10*deltaTime * self.forwardQuat,self.z_velocity*10*deltaTime * self.rightQuat)
+        axis = camera.getQuat().getRight()
+        axis.normalize()
+        angle = (self.z_velocity*deltaTime*-5*0.25)
+        quat = Quat()
+        quat.setFromAxisAngle(angle, axis)
+        newVec = self.character.getQuat()*quat
+        print(newVec.getHpr())
+        if self.z_velocity > 0:
+            self.character.setQuat(self.character, newVec)
         self.cTrav.traverse(render)
-
         # checking for collisions - downwards
         entries = list(self.groundHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
