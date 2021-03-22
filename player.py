@@ -245,15 +245,14 @@ class Player():
 
         # movement updates
         self.playerHolder.setY(self.playerBase, (self.z_velocity * deltaTime))
-        axis = camera.getQuat().getRight()
-        axis.normalize()
-        angle = (self.z_velocity*deltaTime*-5*0.25)
+        axis = self.playerBase.getQuat().getRight()
+        angle = (self.z_velocity*deltaTime*-3)
         quat = Quat()
         quat.setFromAxisAngle(angle, axis)
         newVec = self.character.getQuat()*quat
-        print(newVec.getHpr())
+        #print(newVec.getHpr())
         if self.z_velocity > 0:
-            self.character.setQuat(self.character, newVec)
+            self.character.setQuat(newVec)
         self.cTrav.traverse(render)
         # checking for collisions - downwards
         entries = list(self.groundHandler.entries)
