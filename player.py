@@ -15,6 +15,7 @@ class Player():
         self.jetPack_AUDIO.setLoop(True)
         self.vertical_velocity = 0
         self.z_velocity = 0
+        self.x_velocity = 0
         self.movingZ = False
         self.movingX = False
         #initiate GUI
@@ -145,6 +146,7 @@ class Player():
     def playerUpdate(self,task): #our UPDATE TASK
         deltaTime = globalClock.getDt()
         self.movingZ = False
+        self.movingX = False
         #mouse controls
         if self.toggleFPCam: #first person camera controls
             camera.setPos(self.character.getPos())  # 0,-50,-10
@@ -182,13 +184,19 @@ class Player():
 
         if self.keyMap["right"]:
             self.monitor.setH(self.playerBase.getH()-180)
-            self.playerHolder.setX(self.playerBase, (self.walkConstant*deltaTime))
+            self.movingX = True
+            self.x_velocity += 20
+            if self.x_velocity > self.walkConstant:
+                self.x_velocity = self.walkConstant
         if self.keyMap["p"]:
             print(self.playerHolder.getPos())
             print(self.thirdPersonCamera_ZOOM)
         if self.keyMap["left"]:
             self.monitor.setH(self.playerBase.getH())
-            self.playerHolder.setX(self.playerBase, (-self.walkConstant*deltaTime))
+            self.movingX = True
+            self.x_velocity -= 20
+            if self.x_velocity < -self.walkConstant:
+                self.x_velocity = -self.walkConstant
         if self.keyMap["backwards"]:
             self.monitor.setH(self.playerBase.getH() + 90)
             self.movingZ = True
@@ -201,6 +209,11 @@ class Player():
                 self.z_velocity -= 10
             elif self.z_velocity < 0:
                 self.z_velocity += 10
+        if self.movingX == False:
+            if self.x_velocity > 0:
+                self.x_velocity -= 10
+            elif self.x_velocity < 0:
+                self.x_velocity += 10
         # MONITOR HEADINGS FOR DOUBLE INPUT
         if self.keyMap["forward"] and self.keyMap["right"]:
             self.monitor.setH(self.playerBase.getH()-135)
@@ -245,16 +258,28 @@ class Player():
 
         # movement updates
         self.playerHolder.setY(self.playerBase, (self.z_velocity * deltaTime))
+        self.playerHolder.setX(self.playerBase, (self.x_velocity * deltaTime))
+
+        #forward/backward rolling
         axis = self.playerBase.getQuat().getRight()
-        angle = (self.z_velocity*deltaTime*-3)
+        angle = (self.z_velocity*deltaTime*-8)
         quat = Quat()
         quat.setFromAxisAngle(angle, axis)
         newVec = self.character.getQuat()*quat
         #print(newVec.getHpr())
-        if self.z_velocity > 0:
-            self.character.setQuat(newVec)
-        self.cTrav.traverse(render)
+        self.character.setQuat(newVec)
+
+        # sideways rolling
+        axis = self.playerBase.getQuat().getForward()
+        angle = (self.x_velocity * deltaTime * 8)
+        quat = Quat()
+        quat.setFromAxisAngle(angle, axis)
+        newVec = self.character.getQuat() * quat
+        # print(newVec.getHpr())
+        self.character.setQuat(newVec)
+
         # checking for collisions - downwards
+        self.cTrav.traverse(render)
         entries = list(self.groundHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
         self.performGravity = True
@@ -274,5 +299,4 @@ class Player():
             for entry in entries:
                 if (self.playerHolder.getZ() > entry.getSurfacePoint(render).getZ() - 70):
                     self.playerHolder.setZ(entry.getSurfacePoint(render).getZ() - 130)
-
         return task.cont
