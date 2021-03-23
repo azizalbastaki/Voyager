@@ -1,7 +1,6 @@
 #Written by Abdulaziz Albastaki in January 2021
 from panda3d.core import BitMask32, AmbientLight, PointLight, DirectionalLight
-from objectLib import dock
-from water import water
+from objectLib import dock, water
 class environment():
     def __init__(self,render,loader):
         self.loader = loader
