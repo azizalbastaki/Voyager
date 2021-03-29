@@ -9,7 +9,8 @@ class Player():
         #initial variables and sounds
 
         self.developer = True
-        self.gameMode = 0
+        self.gameMode = self.mode0
+        self.playerModeParameters = ()
         self.groundContact = False
         self.jetPack_energy = 100
         self.maximumHeight = maxJPHeight
@@ -311,6 +312,5 @@ class Player():
                     self.playerHolder.setZ(entry.getSurfacePoint(render).getZ() - 130)
 
     def playerUpdate(self,task): #our UPDATE TASK
-        if self.gameMode == 0:
-            self.mode0()
+        self.gameMode(self.playerModeParameters)
         return task.cont
