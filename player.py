@@ -312,5 +312,5 @@ class Player():
                     self.playerHolder.setZ(entry.getSurfacePoint(render).getZ() - 130)
 
     def playerUpdate(self,task): #our UPDATE TASK
-        self.gameMode(self.playerModeParameters)
+        self.gameMode()
         return task.cont

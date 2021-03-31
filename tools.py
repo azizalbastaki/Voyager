@@ -3,10 +3,10 @@ from panda3d.core import BitMask32,CollisionRay,CollisionTraverser,CollisionNode
 from direct.gui.DirectGui import DirectFrame
 from direct.gui.DirectGui import OnscreenText
 from random import randint
-from objectLib import building1, tree1, collisions,walkway1
+from objectLib import building1, tree1, collisions,walkway1,cafe1
 class buildingTool():
     def __init__(self,models,player,loader,accept):
-        self.gameObjects = [building1(loader),tree1(loader),collisions(loader),walkway1(loader)]
+        self.gameObjects = [building1(loader),tree1(loader),collisions(loader),walkway1(loader),cafe1(loader)]
         for i in self.gameObjects:
             i.gameObject.reparentTo(render)
             i.gameObject.hide()

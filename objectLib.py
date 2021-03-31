@@ -65,3 +65,11 @@ class water():
         self.skybox.setPos(location)
         self.skybox.setScale(2000)
         self.skybox.reparentTo(render)
+class cafe1():
+    def __init__(self,loader):
+        self.name = "cafe1"
+        self.file = "assets/environment/arctic/buildings/cafe.bam"
+        self.loader = loader
+        self.bitmask = 4
+        self.otherCommands = ["flattenStrong"]
+        self.gameObject = self.loader.loadModel(self.file)
