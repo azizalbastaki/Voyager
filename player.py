@@ -82,7 +82,7 @@ class Player():
         if self.developer == True:
             self.tool = buildingTool("newbuildings",self.playerHolder,loader,accept)
 
-        #self.setupLighting() # light
+        self.setupLighting() # light
         #initial position
         self.playerHolder.setPos(45178.3, 43109.3, 0)
         self.keyMap = {
@@ -196,7 +196,7 @@ class Player():
         if self.keyMap["right"]:
             self.monitor.setH(self.playerBase.getH() - 180)
             self.movingX = True
-            self.x_velocity += 20
+            self.x_velocity += 5
             if self.x_velocity > self.walkConstant:
                 self.x_velocity = self.walkConstant
         if self.keyMap["p"]:
@@ -205,7 +205,7 @@ class Player():
         if self.keyMap["left"]:
             self.monitor.setH(self.playerBase.getH())
             self.movingX = True
-            self.x_velocity -= 20
+            self.x_velocity -= 5
             if self.x_velocity < -self.walkConstant:
                 self.x_velocity = -self.walkConstant
         if self.keyMap["backwards"]:
@@ -311,6 +311,6 @@ class Player():
                 if (self.playerHolder.getZ() > entry.getSurfacePoint(render).getZ() - 70):
                     self.playerHolder.setZ(entry.getSurfacePoint(render).getZ() - 130)
 
-    def playerUpdate(self,task): #our UPDATE TASK
+    def playerUpdate(self,task): # our UPDATE TASK
         self.gameMode()
         return task.cont

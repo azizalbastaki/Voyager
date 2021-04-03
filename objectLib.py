@@ -7,10 +7,10 @@ class dock():
         self.port.setPos(location)
         self.port.setH(90)
         self.port.setCollideMask(BitMask32.bit(1))
-        ambiet = AmbientLight('ambient')
-        ambiet.setColor((0.2, 0.2, 0.2, 1))
-        alight = self.port.attachNewNode(ambiet)
-        self.port.setLight(alight)
+        #ambiet = AmbientLight('ambient')
+        #ambiet.setColor((0.2, 0.2, 0.2, 1))
+        #alight = self.port.attachNewNode(ambiet)
+        #self.port.setLight(alight)
         self.port.reparentTo(render)
 class collisions():
     def __init__(self,loader):
@@ -72,4 +72,11 @@ class cafe1():
         self.loader = loader
         self.bitmask = 4
         self.otherCommands = ["flattenStrong"]
+        self.gameObject = self.loader.loadModel(self.file)
+class light():
+    def __init__(self,loader):
+        self.name = "light"
+        self.file = "assets/base/models/light.bam"
+        self.loader = loader
+        self.otherCommands = []
         self.gameObject = self.loader.loadModel(self.file)

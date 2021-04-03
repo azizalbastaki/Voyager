@@ -133,11 +133,27 @@ class environment():
             self.tree15679.flattenStrong()
             self.tree15679.reparentTo(render)
 
+            self.light7208 = self.loader.loadModel('assets/base/models/light.bam')
+            self.light7208.setScale(14)
+            self.light7208.setPos(45193.30078125, 43214.30078125, -9.174566268920898)
+            self.light7208.setH(0.0)
+            self.light7208.reparentTo(render)
+            render.setLight(self.light7208.getChild(1).getChild(0))
+            self.building18899.setLight(self.light7208.getChild(1).getChild(0))
+
+            self.cafe15715 = self.loader.loadModel('assets/environment/arctic/buildings/cafe.bam')
+            self.cafe15715.setScale(2)
+            self.cafe15715.setPos(45178.2734375, 43565.75390625, -9.174566268920898)
+            self.cafe15715.setCollideMask(BitMask32.bit(4))
+            self.cafe15715.setH(6.830189249740215e-06)
+            self.cafe15715.flattenStrong()
+            self.cafe15715.reparentTo(render)
+
         generatedMap()
 
     def setupLights(self):
         ambiet = AmbientLight('ambient')
-        ambiet.setColor((0.2,0.2,0.2,1))
+        ambiet.setColor((0.1,0.1,0.1,1))
         alight = render.attachNewNode(ambiet)
         render.setLight(alight)
         dlight = DirectionalLight('dlight')
