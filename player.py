@@ -8,30 +8,34 @@ class Player():
     def __init__(self,camera,accept,render,loader,maxJPHeight):
         #initial variables and sounds
 
-        self.developer = True
-        self.gameMode = self.mode0
-        self.playerModeParameters = ()
-        self.groundContact = False
-        self.jetPack_energy = 100
-        self.maximumHeight = maxJPHeight
-        self.jetPack_AUDIO = loader.loadSfx("assets/base/sounds/jetpack2.wav")
+        self.developer = True # Developer tools (building tools) will be accessible if this is turned on.
+        self.gameMode = self.mode0 # the current playerUpdate function that is in use
+        self.playerModeParameters = () # the parameters being fed into the function above.
+        self.groundContact = False # if the player is on the ground or a surface, gravity will not pull the player below the surface
+        self.jetPack_energy = 100 # Initial amount of fuel in jet pack
+        self.maximumHeight = maxJPHeight # maximum height in which the jetpack can fly to, this is dependent on the map loaded.
+        self.jetPack_AUDIO = loader.loadSfx("assets/base/sounds/jetpack2.wav") # Audio played when jetpack is in use.
         self.jetPack_AUDIO.setLoop(True)
-        self.vertical_velocity = 0
-        self.z_velocity = 0
-        self.x_velocity = 0
-        self.movingZ = False
-        self.movingX = False
+        self.vertical_velocity = 0 # Current Z velocity, positive = Upwards.
+        self.z_velocity = 0 # Current Y velocity
+        self.x_velocity = 0 # current X velocity
+        self.movingZ = False # whether force is being applied in the Y component of the player
+        self.movingX = False # whether force is being applied in the X component of the player
+
+
         #initiate GUI
         self.HUD = GUI()
         self.playerHolder = render.attachNewNode('player')
-        #camera control
+        # camera control - Hiding mouse and using it to rotate the camera
         props = WindowProperties()
         props.setCursorHidden(True)
         props.setMouseMode(WindowProperties.M_relative)
         base.win.requestProperties(props)
-        self.thirdPersonCamera_ZOOM = -50
+
+        # PLAYER MODEL SCENE GRAPH
+        self.thirdPersonCamera_ZOOM = -50 # initial distance of third person camera.
         self.character = loader.loadModel('assets/base/models/playerModel/player.bam')
-        self.toggleFPCam = False
+        self.toggleFPCam = False # Whether first person camera is on, this is initially off.
         self.character.setPos(0,0,0)
         self.character.reparentTo(self.playerHolder)
         self.playerBase = self.playerHolder.attachNewNode('camParent')
@@ -42,7 +46,8 @@ class Player():
         self.monitor = loader.loadModel('assets/base/models/faces/playerMonitor.bam')
         self.monitor.reparentTo(self.playerHolder)
         self.cTrav = CollisionTraverser()
-        #Horizontal collisions
+
+        # Horizontal collisions
         self.pusher = CollisionHandlerPusher()
         self.pusher.horizontal = True
         self.colliderNode = CollisionNode("player")
@@ -55,7 +60,7 @@ class Player():
         self.pusher.addCollider(collider, self.playerHolder)
         self.cTrav.addCollider(collider,self.pusher)
 
-        #Vertical collisions - Downwards
+        # Vertical collisions - Downwards
         self.groundRay = CollisionRay()
         self.groundRay.setDirection(0, 0, -1)
         self.groundRayCol = CollisionNode('playerRay')
@@ -80,7 +85,7 @@ class Player():
 
 
         if self.developer == True:
-            self.tool = buildingTool("newbuildings",self.playerHolder,loader,accept)
+            self.tool = buildingTool("newbuildings",self.playerHolder,loader,accept) # Load up building tool if developer modee is on.
 
         self.setupLighting() # light
         #initial position
@@ -136,7 +141,7 @@ class Player():
         if key == "scrolldown":
             self.thirdPersonCamera_ZOOM -= self.scrollFactor
 
-    def changeCamera(self):
+    def changeCamera(self): # Toggle first person camera.
         if self.toggleFPCam == False:
             self.toggleFPCam = True
         else:
@@ -156,12 +161,11 @@ class Player():
         deltaTime = globalClock.getDt()
         self.movingZ = False
         self.movingX = False
-        # mouse controls
+        # FIRST PERSON CAMERA
         if self.toggleFPCam:  # first person camera controls
             camera.setPos(self.character.getPos())  # 0,-50,-10
             camera.setZ(camera.getZ() + 6)
             self.playerHolder.hide()
-
             if (base.mouseWatcherNode.hasMouse() == True):
                 mouseposition = base.mouseWatcherNode.getMouse()
                 camera.setP(mouseposition.getY() * 20)
@@ -174,6 +178,7 @@ class Player():
             elif camera.getP() < -90:
                 self.recenterMouse()
                 camera.setP(-90)
+
         else:  # takes out of first person perspective if toggleFPS is turned off.
             self.playerHolder.show()
             camera.setPos(0, self.thirdPersonCamera_ZOOM, 0)  # 0,-50,-4
@@ -182,7 +187,7 @@ class Player():
         self.walkConstant = 40
         self.rotateConstant = 500
 
-        def rotateMonitor():
+        def rotateMonitor(): # not in use. may be needed in the future.
             self.monitor.setH(self.playerBase.getH() - 90)
 
         # Keyboard controls

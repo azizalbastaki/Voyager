@@ -9,13 +9,15 @@ import simplepbr
 class MyApp(ShowBase):
     def __init__(self):
         ShowBase.__init__(self)   # initialise
-        base.set_background_color(0.53,0.81,0.92)
+        base.set_background_color(0,0,0.02)
+
         world = environment(self.render,self.loader)
-        # simplepbr.init(use_normal_maps=True) -- UNCOMMENT THIS OUT
+        simplepbr.init(use_normal_maps=True)
+
         base.setFrameRateMeter(True)
         self.disableMouse()
         self.player = Player(self.camera,self.accept,self.render,self.loader,world.maximumHeight)
-        self.render.setShaderAuto() # -- COMMENT THIS OUT
+        #self.render.setShaderAuto()
         self.updateTask = taskMgr.add(self.player.playerUpdate, "update")
 app = MyApp()
 app.run()

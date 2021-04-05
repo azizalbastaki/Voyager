@@ -11,6 +11,7 @@ class dock():
         #ambiet.setColor((0.2, 0.2, 0.2, 1))
         #alight = self.port.attachNewNode(ambiet)
         #self.port.setLight(alight)
+        self.port.setShaderAuto()
         self.port.reparentTo(render)
 class collisions():
     def __init__(self,loader):
@@ -56,15 +57,16 @@ class water():
         self.water.setTexScale(self.newTS, 80)
         self.water.setTexture(self.normal_TS, loader.loadTexture('assets/environment/arctic/nature/textures/water_normalmap.jpg'))
         self.water.setTexScale(self.normal_TS, 80)
+        self.water.setShaderAuto()
         ambiet = AmbientLight('ambient')
         ambiet.setColor((0.2, 0.2, 0.2, 1))
         alight = self.water.attachNewNode(ambiet)
-        self.water.setLight(alight)
+        #self.water.setLight(alight)
         self.water.reparentTo(render)
         self.skybox = loader.loadModel("assets/environment/arctic/nature/skybox.bam")
         self.skybox.setPos(location)
         self.skybox.setScale(2000)
-        self.skybox.reparentTo(render)
+        #self.skybox.reparentTo(render)
 class cafe1():
     def __init__(self,loader):
         self.name = "cafe1"
