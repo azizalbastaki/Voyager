@@ -61,7 +61,7 @@ class water():
         ambiet = AmbientLight('ambient')
         ambiet.setColor((0.2, 0.2, 0.2, 1))
         alight = self.water.attachNewNode(ambiet)
-        #self.water.setLight(alight)
+        self.water.setLight(alight)
         self.water.reparentTo(render)
         self.skybox = loader.loadModel("assets/environment/arctic/nature/skybox.bam")
         self.skybox.setPos(location)

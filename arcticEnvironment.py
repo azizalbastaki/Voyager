@@ -113,7 +113,7 @@ class environment():
         ambiet = AmbientLight('ambient')
         ambiet.setColor((0.1,0.1,0.1,1))
         alight = render.attachNewNode(ambiet)
-        render.setLight(alight)
+        #render.setLight(alight)
         dlight = DirectionalLight('dlight')
         dlight.setColor((0.8, 0.8, 0.8, 1))
         dlnp = render.attachNewNode(dlight)

@@ -153,6 +153,7 @@ class Player():
         plight = PointLight('plight')
         plight.setColor((1, 1, 1, 1))
         plnp = self.playerHolder.attachNewNode(plight)
+        plnp.setPos(0,1,7)
         render.setLight(plnp)
 
 # PLAYER MODES, HOW THE USER INTERACTS AND CONTROLS WITH THE USER
@@ -252,7 +253,7 @@ class Player():
             if self.jetPack_energy > 100:
                 self.jetPack_energy = 100
             self.jetPack_AUDIO.stop()
-        self.HUD.jetpackStatus.text = str(int(self.jetPack_energy)) + "%"
+        self.HUD.jetpackStatus.text = "JETPACK FUEL: "+ str(int(self.jetPack_energy)) + "%"
         # third person camera control
         if (self.toggleFPCam == False):  # third person camera controls
             if (base.mouseWatcherNode.hasMouse() == True):
