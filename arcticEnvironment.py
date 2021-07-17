@@ -104,8 +104,8 @@ class environment():
             self.light7208.setScale(14)
             self.light7208.setPos(45193.30078125, 43214.30078125, -9.174566268920898)
             self.light7208.setH(0.0)
-            #self.light7208.reparentTo(render)
-            #render.setLight(self.light7208.getChild(1).getChild(0))
+            # self.light7208.reparentTo(render)
+            # render.setLight(self.light7208.getChild(1).getChild(0))
 
         generatedMap()
 
@@ -113,11 +113,11 @@ class environment():
         ambiet = AmbientLight('ambient')
         ambiet.setColor((0.1,0.1,0.1,1))
         alight = render.attachNewNode(ambiet)
-        #render.setLight(alight)
+        render.setLight(alight)
         dlight = DirectionalLight('dlight')
         dlight.setColor((0.8, 0.8, 0.8, 1))
         dlnp = render.attachNewNode(dlight)
         dlnp.setHpr(0, -45, 0)
-        #render.setLight(dlnp)
+        render.setLight(dlnp)
     def town(self):
         port = dock(self.loader,(45150, 42978.6, 30))

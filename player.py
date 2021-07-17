@@ -26,6 +26,7 @@ class Player():
         #initiate GUI
         self.HUD = GUI()
         self.playerHolder = render.attachNewNode('player')
+
         # camera control - Hiding mouse and using it to rotate the camera
         props = WindowProperties()
         props.setCursorHidden(True)
@@ -70,6 +71,13 @@ class Player():
         self.groundColNp = self.playerHolder.attachNewNode(self.groundRayCol)
         self.groundHandler = CollisionHandlerQueue()
         self.cTrav.addCollider(self.groundColNp, self.groundHandler)
+
+        # Third Person Camera
+        self.cameraRay = CollisionRay()
+        self.cameraRay.setDirection(camera.getHpr())
+        self.cameraRayNode = CollisionNode('cameraRay')
+        self.cameraRayNode.addSolid(self.cameraRay)
+        self.cameraRayNode.setFromCollideMask(CollideMask.bit(1))
 
         # Vertical collisions - Upwards
         self.upwardsRay = CollisionRay()
@@ -208,6 +216,7 @@ class Player():
         if self.keyMap["p"]:
             print(self.playerHolder.getPos())
             print(self.thirdPersonCamera_ZOOM)
+            self.gameMode = self.mode1
         if self.keyMap["left"]:
             self.monitor.setH(self.playerBase.getH())
             self.movingX = True
@@ -253,7 +262,7 @@ class Player():
             if self.jetPack_energy > 100:
                 self.jetPack_energy = 100
             self.jetPack_AUDIO.stop()
-        self.HUD.jetpackStatus.text = "JETPACK FUEL: "+ str(int(self.jetPack_energy)) + "%"
+        self.HUD.jetpackStatus.text = "Jetpack Fuel: "+ str(int(self.jetPack_energy)) + "%"
         # third person camera control
         if (self.toggleFPCam == False):  # third person camera controls
             if (base.mouseWatcherNode.hasMouse() == True):
@@ -316,6 +325,15 @@ class Player():
             for entry in entries:
                 if (self.playerHolder.getZ() > entry.getSurfacePoint(render).getZ() - 70):
                     self.playerHolder.setZ(entry.getSurfacePoint(render).getZ() - 130)
+
+
+
+
+    def mode1(self):
+        self.playerHolder.hide()
+        if self.keyMap["backwards"]:
+            self.playerHolder.show()
+            self.gameMode = self.mode0
 
     def playerUpdate(self,task): # our UPDATE TASK
         self.gameMode()
