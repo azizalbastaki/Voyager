@@ -106,6 +106,21 @@ class environment():
             self.light7208.setH(0.0)
             # self.light7208.reparentTo(render)
             # render.setLight(self.light7208.getChild(1).getChild(0))
+            self.cafe16403 = self.loader.loadModel('assets/environment/arctic/buildings/cafe.bam')
+            self.cafe16403.setScale(3)
+            self.cafe16403.setPos(45472.99609375, 43970.4140625, -9.174566268920898)
+            self.cafe16403.setCollideMask(BitMask32.bit(4))
+            self.cafe16403.setH(-90.00000762939453)
+            self.cafe16403.flattenStrong()
+            self.cafe16403.reparentTo(render)
+
+            self.building1_collision6224 = self.loader.loadModel('assets/environment/arctic/buildings/building1collision.bam')
+            self.building1_collision6224.setScale(3)
+            self.building1_collision6224.setPos(45472.99609375, 43970.4140625, -9.174566268920898)
+            self.building1_collision6224.setCollideMask(BitMask32.bit(0))
+            self.building1_collision6224.setH(-90.00000762939453)
+            self.building1_collision6224.hide()
+            self.building1_collision6224.reparentTo(render)
 
         generatedMap()
 

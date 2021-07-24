@@ -74,11 +74,12 @@ class Player():
 
         # Third Person Camera
         self.cameraRay = CollisionRay()
-        self.cameraRay.setDirection(camera.getHpr())
+        self.cameraRay.setDirection(0,0,1)
         self.cameraRayNode = CollisionNode('cameraRay')
         self.cameraRayNode.addSolid(self.cameraRay)
         self.cameraRayNode.setFromCollideMask(CollideMask.bit(1))
-
+        self.cameraRayNodeInstance = camera.attachNewNode(self.cameraRayNode)
+        self.cameraRayNodeInstance.show()
         # Vertical collisions - Upwards
         self.upwardsRay = CollisionRay()
         self.upwardsRay.setDirection(0, 0, 1)
@@ -95,7 +96,7 @@ class Player():
         if self.developer == True:
             self.tool = buildingTool("newbuildings",self.playerHolder,loader,accept) # Load up building tool if developer modee is on.
 
-        self.setupLighting() # light
+        #self.setupLighting() # light
         #initial position
         self.playerHolder.setPos(45178.3, 43109.3, 0)
         self.keyMap = {
@@ -231,11 +232,15 @@ class Player():
                 self.z_velocity = -self.walkConstant
 
         if self.movingZ == False:
+            if self.z_velocity <= 7 or (self.z_velocity >= -5 and self.z_velocity < 0): # Shaking bug fix
+                self.z_velocity = 0
             if self.z_velocity > 0:
                 self.z_velocity -= 10
             elif self.z_velocity < 0:
                 self.z_velocity += 10
         if self.movingX == False:
+            if self.x_velocity <= 5 or (self.x_velocity >= -5 and self.x_velocity < 0): # Shaking bug fix
+                self.x_velocity = 0
             if self.x_velocity > 0:
                 self.x_velocity -= 10
             elif self.x_velocity < 0:
@@ -301,7 +306,7 @@ class Player():
         quat = Quat()
         quat.setFromAxisAngle(angle, axis)
         newVec = self.character.getQuat() * quat
-        # print(newVec.getHpr())
+        #print(newVec.getHpr())
         self.character.setQuat(newVec)
 
         # checking for collisions - downwards
