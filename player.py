@@ -140,6 +140,11 @@ class Player():
         self.playerMode = playerModes(self.playerBase,self.playerHolder,self.character,self.vertical_velocity,self.z_velocity,self.x_velocity,self.keyMap,self.monitor,self.thirdPersonNode,self.jetPack_energy,self.jetPack_AUDIO,self.thirdPersonCamera_ZOOM, self.toggleFPCam,self.HUD, self.cTrav,self.groundHandler,self.upwardsHandler, self.maximumHeight)
 
 
+    def playerUpdate(self,task): # our UPDATE TASK
+        self.gameMode()
+        return task.cont
+
+
     def updateKey(self,key,value):
         self.keyMap[key] = value
         if key == "change_camera":
@@ -166,6 +171,11 @@ class Player():
         render.setLight(plnp)
 
 # PLAYER MODES, HOW THE USER INTERACTS AND CONTROLS WITH THE USER
+
+    #   MODE 0
+    # Mode 0 is the default update mode, it allows WASD movement,
+    # mouse controlled camera rotations, first person and third
+    # person switching, it also has GUI display and player physics.
 
     def mode0(self): # THE NORMAL/DEFAULT PLAYER MODE
         deltaTime = globalClock.getDt()
@@ -194,9 +204,10 @@ class Player():
             camera.setPos(0, self.thirdPersonCamera_ZOOM, 0)  # 0,-50,-4
             camera.lookAt(self.character)
 
-        self.walkConstant = 40
+        self.walkConstant = 38
         self.rotateConstant = 500
-
+        if (["forward"] or ["backwards"]) and (["right"] or ["left"]):
+            self.walkConstant = int(((self.walkConstant ** 2)/2) ** 0.5)
         def rotateMonitor(): # not in use. may be needed in the future.
             self.monitor.setH(self.playerBase.getH() - 90)
 
@@ -267,7 +278,7 @@ class Player():
             if self.jetPack_energy > 100:
                 self.jetPack_energy = 100
             self.jetPack_AUDIO.stop()
-        self.HUD.jetpackStatus.text = "Jetpack Fuel: "+ str(int(self.jetPack_energy)) + "%"
+        self.HUD.jetpackStatus.text = "Levitation Energy: "+ str(int(self.jetPack_energy)) + "%"
         # third person camera control
         if (self.toggleFPCam == False):  # third person camera controls
             if (base.mouseWatcherNode.hasMouse() == True):
@@ -331,8 +342,10 @@ class Player():
                 if (self.playerHolder.getZ() > entry.getSurfacePoint(render).getZ() - 70):
                     self.playerHolder.setZ(entry.getSurfacePoint(render).getZ() - 130)
 
-
-
+    # PLAYER MODES, HOW THE USER INTERACTS AND CONTROLS WITH THE USER
+    #   MODE 1
+    # Mode 1 is a test update loop used to test player loop switching.
+    # it simply freezes the controls.
 
     def mode1(self):
         self.playerHolder.hide()
@@ -340,6 +353,4 @@ class Player():
             self.playerHolder.show()
             self.gameMode = self.mode0
 
-    def playerUpdate(self,task): # our UPDATE TASK
-        self.gameMode()
-        return task.cont
+
