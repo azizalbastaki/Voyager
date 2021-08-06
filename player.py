@@ -1,6 +1,6 @@
 #Written by Abdulaziz Albastaki in January 2021
 import sys
-from panda3d.core import Vec3,Quat,PointLight,CollisionHandlerQueue,CollisionRay, WindowProperties, CollisionTraverser, CollisionHandlerPusher, CollisionSphere, CollisionNode, CollideMask, BitMask32
+from panda3d.core import Vec3,Quat,PointLight,CollisionHandlerQueue,CollisionRay, WindowProperties, CollisionTraverser, CollisionHandlerPusher, CollisionSphere, CollisionNode, CollideMask, BitMask32, CollisionSegment
 from playerModes import playerModes
 from playerGUI import GUI
 from tools import buildingTool
@@ -10,17 +10,17 @@ class Player():
 
         self.developer = True # Developer tools (building tools) will be accessible if this is turned on.
         self.gameMode = self.mode0 # the current playerUpdate function that is in use
-        self.playerModeParameters = () # the parameters being fed into the function above.
+        # self.playerModeParameters = () # the parameters being fed into the function above.
         self.groundContact = False # if the player is on the ground or a surface, gravity will not pull the player below the surface
-        self.jetPack_energy = 100 # Initial amount of fuel in jet pack
+        self.jetPack_energy = 100
         self.maximumHeight = maxJPHeight # maximum height in which the jetpack can fly to, this is dependent on the map loaded.
-        self.jetPack_AUDIO = loader.loadSfx("assets/base/sounds/jetpack2.wav") # Audio played when jetpack is in use.
+        self.jetPack_AUDIO = loader.loadSfx("assets/base/sounds/jetpack2.wav")
         self.jetPack_AUDIO.setLoop(True)
         self.vertical_velocity = 0 # Current Z velocity, positive = Upwards.
         self.z_velocity = 0 # Current Y velocity
-        self.x_velocity = 0 # current X velocity
-        self.movingZ = False # whether force is being applied in the Y component of the player
-        self.movingX = False # whether force is being applied in the X component of the player
+        self.x_velocity = 0
+        self.movingZ = False
+        self.movingX = False
 
 
         #initiate GUI
@@ -72,14 +72,14 @@ class Player():
         self.groundHandler = CollisionHandlerQueue()
         self.cTrav.addCollider(self.groundColNp, self.groundHandler)
 
-        # Third Person Camera
-        self.cameraRay = CollisionRay()
-        self.cameraRay.setDirection(0,0,1)
-        self.cameraRayNode = CollisionNode('cameraRay')
+        # Third Person Camera Collision
+        self.cameraRay = CollisionSegment()
+        self.cameraRayNode = CollisionNode('camerRay')
         self.cameraRayNode.addSolid(self.cameraRay)
-        self.cameraRayNode.setFromCollideMask(CollideMask.bit(1))
-        self.cameraRayNodeInstance = camera.attachNewNode(self.cameraRayNode)
-        self.cameraRayNodeInstance.show()
+        self.cameraRayNodePath = render.attachNewNode(self.cameraRayNode)
+        self.cameraCollisionHandler = CollisionHandlerQueue()
+        self.cTrav.addCollider(self.cameraRayNodePath, self.cameraCollisionHandler)
+
         # Vertical collisions - Upwards
         self.upwardsRay = CollisionRay()
         self.upwardsRay.setDirection(0, 0, 1)
@@ -91,7 +91,6 @@ class Player():
         self.upwardsHandler = CollisionHandlerQueue()
         self.cTrav.addCollider(self.upwardsColNp, self.upwardsHandler)
         #self.cTrav.showCollisions(render)
-
 
         if self.developer == True:
             self.tool = buildingTool("newbuildings",self.playerHolder,loader,accept) # Load up building tool if developer modee is on.
@@ -177,45 +176,47 @@ class Player():
     # mouse controlled camera rotations, first person and third
     # person switching, it also has GUI display and player physics.
 
-    def mode0(self): # THE NORMAL/DEFAULT PLAYER MODE
+    def mode0(self):
+
+        #THIRD PERSON CAMERA COLLISION
+
+        # print("thirdpersonnode")
+        # print(self.playerBase.getHpr())
+        # print("pb")
+        # print(self.character.getHpr())
+
         deltaTime = globalClock.getDt()
         self.movingZ = False
         self.movingX = False
-        # FIRST PERSON CAMERA
-        if self.toggleFPCam:  # first person camera controls
-            camera.setPos(self.character.getPos())  # 0,-50,-10
-            camera.setZ(camera.getZ() + 6)
-            self.playerHolder.hide()
-            if (base.mouseWatcherNode.hasMouse() == True):
-                mouseposition = base.mouseWatcherNode.getMouse()
-                camera.setP(mouseposition.getY() * 20)
-                self.playerBase.setH(mouseposition.getX() * -50)
-                if (mouseposition.getX() < 0.1 and mouseposition.getX() > -0.1):
-                    self.playerBase.setH(self.playerBase.getH())
-            if camera.getP() > 90:
-                self.recenterMouse()
-                camera.setP(90)  # TRACK MOUSE
-            elif camera.getP() < -90:
-                self.recenterMouse()
-                camera.setP(-90)
-
-        else:  # takes out of first person perspective if toggleFPS is turned off.
-            self.playerHolder.show()
-            camera.setPos(0, self.thirdPersonCamera_ZOOM, 0)  # 0,-50,-4
-            camera.lookAt(self.character)
-
-        self.walkConstant = 38
-        self.rotateConstant = 500
-        if (["forward"] or ["backwards"]) and (["right"] or ["left"]):
-            self.walkConstant = int(((self.walkConstant ** 2)/2) ** 0.5)
-        def rotateMonitor(): # not in use. may be needed in the future.
-            self.monitor.setH(self.playerBase.getH() - 90)
+        self.walkConstant = 25
+        self.rotateConstant = 750
 
         # Keyboard controls
+        # LEVITATION STUFF (FORMERLY CALLED JETPACK)
+
+        if self.keyMap["space"] and self.jetPack_energy > 0:
+            jetpack = 0.00001 * (((self.playerHolder.getZ()) - self.maximumHeight) ** 2) + 9.81
+            self.playerHolder.setZ(self.playerBase, jetpack)
+            self.jetPack_energy -= 15 * deltaTime
+            self.walkConstant = 70
+            self.jetPack_AUDIO.play()
+        else:
+            self.jetPack_AUDIO.stop()
+        if self.jetPack_energy < 100:
+            self.jetPack_energy += 10 * deltaTime
+        if self.jetPack_energy > 100:
+            self.jetPack_energy = 100
+
+        self.HUD.jetpackStatus.text = "Levitation Battery: "+ str(int(self.jetPack_energy)) + "%"
+
+        if (self.keyMap["forward"] or self.keyMap["backwards"]) and (self.keyMap["right"] or self.keyMap["left"]):
+            self.walkConstant = int(((self.walkConstant ** 2)/2) ** 0.5)
+
+        # WASD MOVEMENT
         if self.keyMap["forward"]:
             self.monitor.setH(self.playerBase.getH() - 90)
             self.movingZ = True
-            self.z_velocity += 20
+            self.z_velocity += 5
             if self.z_velocity > self.walkConstant:
                 self.z_velocity = self.walkConstant
 
@@ -266,19 +267,8 @@ class Player():
         elif self.keyMap["backwards"] and self.keyMap["right"]:
             self.monitor.setH(self.playerBase.getH() + 135)
 
-        if self.keyMap["space"] and self.jetPack_energy > 0:
-            jetpack = 0.00001 * (((self.playerHolder.getZ()) - self.maximumHeight) ** 2) + 9.81
-            self.playerHolder.setZ(self.playerBase, jetpack)
-            self.jetPack_energy -= 8 * deltaTime
-            if self.jetPack_AUDIO.status() != self.jetPack_AUDIO.PLAYING:
-                self.jetPack_AUDIO.play()
-        else:
-            if self.jetPack_energy < 100:
-                self.jetPack_energy += 10 * deltaTime
-            if self.jetPack_energy > 100:
-                self.jetPack_energy = 100
-            self.jetPack_AUDIO.stop()
-        self.HUD.jetpackStatus.text = "Levitation Energy: "+ str(int(self.jetPack_energy)) + "%"
+
+
         # third person camera control
         if (self.toggleFPCam == False):  # third person camera controls
             if (base.mouseWatcherNode.hasMouse() == True):
@@ -287,6 +277,7 @@ class Player():
                 self.playerBase.setH(mouseposition.getX() * -50)
                 if (mouseposition.getX() < 0.1 and mouseposition.getX() > -0.1):
                     self.playerBase.setH(self.playerBase.getH())
+
             if self.thirdPersonNode.getP() > 90:
                 self.recenterMouse()
                 self.thirdPersonNode.setP(90)  # TRACK MOUSE
@@ -297,7 +288,28 @@ class Player():
                 self.thirdPersonCamera_ZOOM = -20
             elif self.thirdPersonCamera_ZOOM < -390:
                 self.thirdPersonCamera_ZOOM = -390
-
+        # CAMERA STUFF
+        # FIRST PERSON CAMERA
+        if self.toggleFPCam:  # first person camera controls
+            camera.setPos(self.character.getPos())  # 0,-50,-10
+            camera.setZ(camera.getZ() + 6)
+            self.playerHolder.hide()
+            if (base.mouseWatcherNode.hasMouse() == True):
+                mouseposition = base.mouseWatcherNode.getMouse()
+                camera.setP(mouseposition.getY() * 20)
+                self.playerBase.setH(mouseposition.getX() * -50)
+                if (mouseposition.getX() < 0.1 and mouseposition.getX() > -0.1):
+                    self.playerBase.setH(self.playerBase.getH())
+            if camera.getP() > 90:
+                self.recenterMouse()
+                camera.setP(90)  # TRACK MOUSE
+            elif camera.getP() < -90:
+                self.recenterMouse()
+                camera.setP(-90)
+        else:  # takes out of first person perspective if toggleFPS is turned off.
+            self.playerHolder.show()
+            camera.setPos(0, self.thirdPersonCamera_ZOOM, 0)  # 0,-50,-4
+            camera.lookAt(self.character)
         # movement updates
         self.playerHolder.setY(self.playerBase, (self.z_velocity * deltaTime))
         self.playerHolder.setX(self.playerBase, (self.x_velocity * deltaTime))
@@ -317,11 +329,28 @@ class Player():
         quat = Quat()
         quat.setFromAxisAngle(angle, axis)
         newVec = self.character.getQuat() * quat
-        #print(newVec.getHpr())
+        # print(self.playerBase.getPos())
         self.character.setQuat(newVec)
+        self.cameraRay.setPointA(self.playerBase.getPos())
+        if camera.getPos() != (0,0,0):
+            self.cameraRay.setPointB(camera.getPos(base.render))
+            
+        self.cTrav.traverse(render)
+
+        # checking for camera collisions
+        entries = list(self.cameraCollisionHandler.entries)
+        for entry in entries:
+            if str(entry.getIntoNodePath())[:19] != "render/worldTerrain":
+                #camera.setPos(entry.getSurfacePoint(self.thirdPersonNode))
+                self.thirdPersonCamera_ZOOM += 1
+        
+
+        # if len(entries) > 0:
+        #     if (self.playerHolder.getZ() < entries[-1].getSurfacePoint(render).getZ() + 8):
+        #         self.playerHolder.setZ(entries[-1].getSurfacePoint(render).getZ() + 8)
+        #         self.vertical_velocity = 0
 
         # checking for collisions - downwards
-        self.cTrav.traverse(render)
         entries = list(self.groundHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
         self.performGravity = True
@@ -334,6 +363,7 @@ class Player():
             if (self.playerHolder.getZ() < entries[-1].getSurfacePoint(render).getZ() + 8):
                 self.playerHolder.setZ(entries[-1].getSurfacePoint(render).getZ() + 8)
                 self.vertical_velocity = 0
+
         # checking for collisions - upwards
         entries = list(self.upwardsHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
@@ -349,8 +379,7 @@ class Player():
 
     def mode1(self):
         self.playerHolder.hide()
+        self.playerHolder.setHpr(0,0,0)
         if self.keyMap["backwards"]:
             self.playerHolder.show()
             self.gameMode = self.mode0
-
-
