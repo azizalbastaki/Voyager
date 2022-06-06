@@ -8,7 +8,7 @@ class Player():
     def __init__(self,camera,accept,render,loader,maxJPHeight):
         #initial variables and sounds
 
-        self.developer = True # Developer tools (building tools) will be accessible if this is turned on.
+        self.developer = False # Developer tools (building tools) will be accessible if this is turned on.
         self.gameMode = self.mode0 # the current playerUpdate function that is in use
         # self.playerModeParameters = () # the parameters being fed into the function above.
         self.groundContact = False # if the player is on the ground or a surface, gravity will not pull the player below the surface
@@ -188,21 +188,22 @@ class Player():
         deltaTime = globalClock.getDt()
         self.movingZ = False
         self.movingX = False
-        self.walkConstant = 25
+        self.walkConstant = 50
         self.rotateConstant = 750
 
         # Keyboard controls
         # LEVITATION STUFF (FORMERLY CALLED JETPACK)
 
-        if self.keyMap["space"] and self.jetPack_energy > 0:
-            jetpack = 0.00001 * (((self.playerHolder.getZ()) - self.maximumHeight) ** 2) + 9.81
-            self.playerHolder.setZ(self.playerBase, jetpack)
-            self.jetPack_energy -= 15 * deltaTime
-            self.walkConstant = 70
-            self.jetPack_AUDIO.play()
+        if self.keyMap["space"] and self.jetPack_energy > 1:
+            if self.groundContact == False or self.jetPack_energy > 9:
+                jetpack = 0.00001 * (((self.playerHolder.getZ()) - self.maximumHeight) ** 2) + 9.81
+                self.playerHolder.setZ(self.playerBase, jetpack)
+                self.jetPack_energy -= 15 * deltaTime
+                self.walkConstant = 150
+                self.jetPack_AUDIO.play()
         else:
             self.jetPack_AUDIO.stop()
-        if self.jetPack_energy < 100:
+        if self.jetPack_energy < 100 and self.vertical_velocity == 0:
             self.jetPack_energy += 10 * deltaTime
         if self.jetPack_energy > 100:
             self.jetPack_energy = 100
