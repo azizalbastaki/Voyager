@@ -31,53 +31,6 @@ class environment():
 
 
         def generatedMap():
-            self.walkway18112 = self.loader.loadModel('assets/environment/arctic/buildings/walkway.bam')
-            self.walkway18112.setScale(12)
-            self.walkway18112.setPos(45183.828125, 43877.11328125, -9.174566268920898)
-            self.walkway18112.setCollideMask(BitMask32.bit(7))
-            self.walkway18112.setH(90.00000762939453)
-            self.walkway18112.flattenStrong()
-            self.walkway18112.reparentTo(render)
-
-            self.walkway17662 = self.loader.loadModel('assets/environment/arctic/buildings/walkway.bam')
-            self.walkway17662.setScale(12)
-            self.walkway17662.setPos(45183.828125, 43517.11328125, -9.174566268920898)
-            self.walkway17662.setCollideMask(BitMask32.bit(7))
-            self.walkway17662.setH(90.00000762939453)
-            self.walkway17662.flattenStrong()
-            self.walkway17662.reparentTo(render)
-
-            self.walkway1156 = self.loader.loadModel('assets/environment/arctic/buildings/walkway.bam')
-            self.walkway1156.setScale(12)
-            self.walkway1156.setPos(45183.828125, 43157.11328125, -9.174566268920898)
-            self.walkway1156.setCollideMask(BitMask32.bit(7))
-            self.walkway1156.setH(90.00000762939453)
-            self.walkway1156.flattenStrong()
-            self.walkway1156.reparentTo(render)
-
-            self.walkway18646 = self.loader.loadModel('assets/environment/arctic/buildings/walkway.bam')
-            self.walkway18646.setScale(12)
-            self.walkway18646.setPos(45183.828125, 42797.11328125, -9.174566268920898)
-            self.walkway18646.setCollideMask(BitMask32.bit(7))
-            self.walkway18646.setH(90.00000762939453)
-            self.walkway18646.flattenStrong()
-            self.walkway18646.reparentTo(render)
-
-            self.walkway12383 = self.loader.loadModel('assets/environment/arctic/buildings/walkway.bam')
-            self.walkway12383.setScale(12)
-            self.walkway12383.setPos(45183.828125, 44237.11328125, -9.174566268920898)
-            self.walkway12383.setCollideMask(BitMask32.bit(7))
-            self.walkway12383.setH(90.00000762939453)
-            self.walkway12383.flattenStrong()
-            self.walkway12383.reparentTo(render)
-
-            self.walkway12223 = self.loader.loadModel('assets/environment/arctic/buildings/walkway.bam')
-            self.walkway12223.setScale(12)
-            self.walkway12223.setPos(45183.828125, 44537.11328125, -9.174566268920898)
-            self.walkway12223.setCollideMask(BitMask32.bit(7))
-            self.walkway12223.setH(90.00000762939453)
-            self.walkway12223.flattenStrong()
-            self.walkway12223.reparentTo(render)
 
             self.tree14160 = self.loader.loadModel('assets/environment/arctic/nature/tree.bam')
             self.tree14160.setScale(9)
@@ -100,10 +53,6 @@ class environment():
             self.tree15679.flattenStrong()
             self.tree15679.reparentTo(render)
 
-            self.light7208 = self.loader.loadModel('assets/base/models/light.bam')
-            self.light7208.setScale(14)
-            self.light7208.setPos(45193.30078125, 43214.30078125, -9.174566268920898)
-            self.light7208.setH(0.0)
             # self.light7208.reparentTo(render)
             # render.setLight(self.light7208.getChild(1).getChild(0))
             self.cafe16403 = self.loader.loadModel('assets/environment/arctic/buildings/cafe.bam')
@@ -114,13 +63,6 @@ class environment():
             self.cafe16403.flattenStrong()
             self.cafe16403.reparentTo(render)
 
-            self.building1_collision6224 = self.loader.loadModel('assets/environment/arctic/buildings/building1collision.bam')
-            self.building1_collision6224.setScale(3)
-            self.building1_collision6224.setPos(45472.99609375, 43970.4140625, -9.174566268920898)
-            self.building1_collision6224.setCollideMask(BitMask32.bit(0))
-            self.building1_collision6224.setH(-90.00000762939453)
-            self.building1_collision6224.hide()
-            self.building1_collision6224.reparentTo(render)
 
         generatedMap()
 
