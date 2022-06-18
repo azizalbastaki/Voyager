@@ -74,7 +74,7 @@ class Player():
 
         # Third Person Camera Collision
         self.cameraRay = CollisionSegment()
-        self.cameraRayNode = CollisionNode('camerRay')
+        self.cameraRayNode = CollisionNode('cameraRay')
         self.cameraRayNode.addSolid(self.cameraRay)
         self.cameraRayNodePath = render.attachNewNode(self.cameraRayNode)
         self.cameraCollisionHandler = CollisionHandlerQueue()
@@ -192,14 +192,14 @@ class Player():
         self.rotateConstant = 750
 
         # Keyboard controls
-        # LEVITATION STUFF (FORMERLY CALLED JETPACK)
+        # JETPACK STUFF
 
         if self.keyMap["space"] and self.jetPack_energy > 1:
-            if self.groundContact == False or self.jetPack_energy > 9:
+            if self.groundContact == False or self.jetPack_energy > 10:
                 jetpack = 0.00001 * (((self.playerHolder.getZ()) - self.maximumHeight) ** 2) + 9.81
                 self.playerHolder.setZ(self.playerBase, jetpack)
-                self.jetPack_energy -= 15 * deltaTime
-                self.walkConstant = 150
+                self.jetPack_energy -= 2 * deltaTime
+                self.walkConstant = 200
                 self.jetPack_AUDIO.play()
         else:
             self.jetPack_AUDIO.stop()
@@ -208,7 +208,7 @@ class Player():
         if self.jetPack_energy > 100:
             self.jetPack_energy = 100
 
-        self.HUD.jetpackStatus.text = "Levitation Battery: "+ str(int(self.jetPack_energy)) + "%"
+        self.HUD.jetpackStatus.text = "Jetpack Battery: "+ str(int(self.jetPack_energy)) + "%"
 
         if (self.keyMap["forward"] or self.keyMap["backwards"]) and (self.keyMap["right"] or self.keyMap["left"]):
             self.walkConstant = int(((self.walkConstant ** 2)/2) ** 0.5)
