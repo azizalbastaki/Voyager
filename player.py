@@ -4,6 +4,7 @@ from panda3d.core import Vec3,Quat,PointLight,CollisionHandlerQueue,CollisionRay
 from playerModes import playerModes
 from playerGUI import GUI
 from tools import buildingTool
+from pausemenu import pauseMenu
 class Player():
     def __init__(self,camera,accept,render,loader,maxJPHeight):
         #initial variables and sounds
@@ -381,6 +382,11 @@ class Player():
     def mode1(self):
         self.playerHolder.hide()
         self.playerHolder.setHpr(0,0,0)
+        self.menu = pauseMenu()
+        props = WindowProperties()
+        props.setCursorHidden(False)
+        props.setMouseMode(WindowProperties.M_absolute)
+        base.win.requestProperties(props)
         if self.keyMap["backwards"]:
             self.playerHolder.show()
             self.gameMode = self.mode0
