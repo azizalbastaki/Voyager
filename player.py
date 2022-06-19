@@ -22,11 +22,15 @@ class Player():
         self.x_velocity = 0
         self.movingZ = False
         self.movingX = False
+        self.playerHolder = render.attachNewNode('player')
 
 
         #initiate GUI
         self.HUD = GUI()
-        self.playerHolder = render.attachNewNode('player')
+        self.pauseMenu = pauseMenu(self.resumeFuncExtension())
+        self.pauseMenu.set_functionOne(self.resumeFuncExtension())
+        self.pauseMenu.hide()
+
 
         # camera control - Hiding mouse and using it to rotate the camera
         props = WindowProperties()
@@ -381,12 +385,19 @@ class Player():
 
     def mode1(self):
         self.playerHolder.hide()
+        self.HUD.jetpackStatus.hide()
         self.playerHolder.setHpr(0,0,0)
-        self.menu = pauseMenu()
         props = WindowProperties()
         props.setCursorHidden(False)
         props.setMouseMode(WindowProperties.M_absolute)
         base.win.requestProperties(props)
-        if self.keyMap["backwards"]:
-            self.playerHolder.show()
-            self.gameMode = self.mode0
+        self.pauseMenu.show()
+
+
+
+
+    # METHODS USED FOR GUI ELEMENTS/EXTERNAL OBJECTS
+    def resumeFuncExtension(self):
+        self.playerHolder.show()
+        self.HUD.jetpackStatus.show()
+        self.gameMode = self.mode0
