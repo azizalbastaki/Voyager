@@ -1,4 +1,4 @@
-#Written by Abdulaziz Albastaki in January 2021
+# Written by Abdulaziz Albastaki in January 2021
 import sys
 from panda3d.core import Vec3,Quat,PointLight,CollisionHandlerQueue,CollisionRay, WindowProperties, CollisionTraverser, CollisionHandlerPusher, CollisionSphere, CollisionNode, CollideMask, BitMask32, CollisionSegment
 from playerModes import playerModes
@@ -23,12 +23,14 @@ class Player():
         self.movingZ = False
         self.movingX = False
         self.playerHolder = render.attachNewNode('player')
+        self.minZoom = -400
+        self.maxZoom = -20
 
 
         #initiate GUI
         self.HUD = GUI()
         self.pauseMenu = pauseMenu(self.resumeFuncExtension())
-        self.pauseMenu.set_functionOne(self.resumeFuncExtension())
+        #self.pauseMenu.set_functionOne(self.resumeFuncExtension())
         self.pauseMenu.hide()
 
 
@@ -290,10 +292,10 @@ class Player():
             elif self.thirdPersonNode.getP() < -90:
                 self.recenterMouse()
                 self.thirdPersonNode.setP(-90)
-            if self.thirdPersonCamera_ZOOM > -20:  # validate zoom
-                self.thirdPersonCamera_ZOOM = -20
-            elif self.thirdPersonCamera_ZOOM < -390:
-                self.thirdPersonCamera_ZOOM = -390
+            if self.thirdPersonCamera_ZOOM > self.maxZoom:  # validate zoom
+                self.thirdPersonCamera_ZOOM = self.maxZoom
+            elif self.thirdPersonCamera_ZOOM < self.minZoom:
+                self.thirdPersonCamera_ZOOM = self.minZoom
         # CAMERA STUFF
         # FIRST PERSON CAMERA
         if self.toggleFPCam:  # first person camera controls
@@ -345,10 +347,11 @@ class Player():
 
         # checking for camera collisions
         entries = list(self.cameraCollisionHandler.entries)
+        print(entries)
         for entry in entries:
             if str(entry.getIntoNodePath())[:19] != "render/worldTerrain":
                 #camera.setPos(entry.getSurfacePoint(self.thirdPersonNode))
-                self.thirdPersonCamera_ZOOM += 1
+                self.thirdPersonCamera_ZOOM += 40
         
 
         # if len(entries) > 0:
