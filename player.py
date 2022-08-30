@@ -339,26 +339,19 @@ class Player():
         newVec = self.character.getQuat() * quat
         # print(self.playerBase.getPos())
         self.character.setQuat(newVec)
-        self.cameraRay.setPointA(self.playerBase.getPos())
+        self.cameraRay.setPointA(self.character.getPos(base.render))
         if camera.getPos() != (0,0,0):
             self.cameraRay.setPointB(camera.getPos(base.render))
-            
+
         self.cTrav.traverse(render)
 
-        # checking for camera collisions
+        # checking for camera collisions (THIRDPERSONCAMERACOLLISION)
         entries = list(self.cameraCollisionHandler.entries)
+        if len(entries) > 0:
+            camera.setPos(render, entries[0].getSurfacePoint(render))
+        print("entries")
         print(entries)
-        for entry in entries:
-            if str(entry.getIntoNodePath())[:19] != "render/worldTerrain":
-                #camera.setPos(entry.getSurfacePoint(self.thirdPersonNode))
-                self.thirdPersonCamera_ZOOM += 40
-        
-
-        # if len(entries) > 0:
-        #     if (self.playerHolder.getZ() < entries[-1].getSurfacePoint(render).getZ() + 8):
-        #         self.playerHolder.setZ(entries[-1].getSurfacePoint(render).getZ() + 8)
-        #         self.vertical_velocity = 0
-
+        print(camera.getPos())
         # checking for collisions - downwards
         entries = list(self.groundHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
