@@ -390,8 +390,12 @@ class Player():
         base.win.requestProperties(props)
         if self.pauseMenu.isDisplayed == False:
             print("CALLED")
-            self.gameMode = self.mode0
+            self.gameMode = 0
             self.playerHolder.show()
             self.HUD.jetpackStatus.show()
+            props = WindowProperties()
+            props.setCursorHidden(True)
+            props.setMouseMode(WindowProperties.M_relative)
+            base.win.requestProperties(props)
 
 
