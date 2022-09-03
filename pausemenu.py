@@ -15,6 +15,7 @@ class pauseMenu():
         self.card = render2d.attachNewNode(self.cardMaker.generate())
         self.cardTexture = loader.loadTexture('assets/base/GUI/pausemenubackground.jpeg')
         self.card.setTexture(self.cardTexture)
+        self.isDisplayed = False
         #self.resumeGameMode = ourResume
 
         self.npfont = loader.loadFont("assets/base/fonts/OPTINewportLand.ttf")
@@ -36,16 +37,17 @@ class pauseMenu():
     #     #self.resumeGameMode()
 
     def show(self):
-        print("HELLO")
         self.card.show()
         self.menuText.show()
         self.resumeButton.show()
+        self.isDisplayed = True
 
     def hide(self):
         print("HIDE!")
         self.card.hide()
         self.menuText.hide()
         self.resumeButton.hide()
+        self.isDisplayed = False
 
 
 
