@@ -10,7 +10,7 @@ class Player():
         #initial variables and sounds
 
         self.developer = False # Developer tools (building tools) will be accessible if this is turned on.
-        self.gameMode = self.mode0 # the current playerUpdate function that is in use
+        self.gameMode = 0 # the current playerUpdate function that is in use
         # self.playerModeParameters = () # the parameters being fed into the function above.
         self.groundContact = False # if the player is on the ground or a surface, gravity will not pull the player below the surface
         self.jetPack_energy = 100
@@ -29,7 +29,8 @@ class Player():
 
         #initiate GUI
         self.HUD = GUI()
-        self.pauseMenu = pauseMenu(self.resumeFuncExtension())
+        self.pauseMenu = pauseMenu(render2d)
+        #self.pauseMenu = pauseMenu()
         #self.pauseMenu.set_functionOne(self.resumeFuncExtension())
         self.pauseMenu.hide()
 
@@ -143,11 +144,14 @@ class Player():
         accept("space",self.updateKey,["space",True])
         accept("space-up",self.updateKey,["space",False])
 
-        self.playerMode = playerModes(self.playerBase,self.playerHolder,self.character,self.vertical_velocity,self.z_velocity,self.x_velocity,self.keyMap,self.monitor,self.thirdPersonNode,self.jetPack_energy,self.jetPack_AUDIO,self.thirdPersonCamera_ZOOM, self.toggleFPCam,self.HUD, self.cTrav,self.groundHandler,self.upwardsHandler, self.maximumHeight)
-
-
+    def checkPlayerUpdate(self):
+        if self.gameMode == 0:
+            self.mode0()
+        else:
+            self.mode1()
     def playerUpdate(self,task): # our UPDATE TASK
-        self.gameMode()
+        self.checkPlayerUpdate()
+        print(self.gameMode)
         return task.cont
 
 
@@ -184,12 +188,11 @@ class Player():
     # person switching, it also has GUI display and player physics.
 
     def mode0(self):
-
         #THIRD PERSON CAMERA COLLISION
 
         # print("thirdpersonnode")
         # print(self.playerBase.getHpr())
-        # print("pb")
+        print("pb")
         # print(self.character.getHpr())
 
         deltaTime = globalClock.getDt()
@@ -235,9 +238,8 @@ class Player():
             if self.x_velocity > self.walkConstant:
                 self.x_velocity = self.walkConstant
         if self.keyMap["p"]:
-            print(self.playerHolder.getPos())
-            print(self.thirdPersonCamera_ZOOM)
-            self.gameMode = self.mode1
+            self.gameMode = 1
+            self.pauseMenu.show()
         if self.keyMap["left"]:
             self.monitor.setH(self.playerBase.getH())
             self.movingX = True
@@ -349,9 +351,7 @@ class Player():
         entries = list(self.cameraCollisionHandler.entries)
         if len(entries) > 0:
             camera.setPos(render, entries[0].getSurfacePoint(render))
-        print("entries")
-        print(entries)
-        print(camera.getPos())
+
         # checking for collisions - downwards
         entries = list(self.groundHandler.entries)
         entries.sort(key=lambda x: x.getSurfacePoint(render).getZ())
@@ -379,6 +379,7 @@ class Player():
     # Mode 1 is a test update loop used to test player loop switching.
     # it simply freezes the controls.
 
+
     def mode1(self):
         self.playerHolder.hide()
         self.HUD.jetpackStatus.hide()
@@ -387,13 +388,5 @@ class Player():
         props.setCursorHidden(False)
         props.setMouseMode(WindowProperties.M_absolute)
         base.win.requestProperties(props)
-        self.pauseMenu.show()
 
 
-
-
-    # METHODS USED FOR GUI ELEMENTS/EXTERNAL OBJECTS
-    def resumeFuncExtension(self):
-        self.playerHolder.show()
-        self.HUD.jetpackStatus.show()
-        self.gameMode = self.mode0
