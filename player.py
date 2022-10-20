@@ -114,12 +114,14 @@ class Player():
             "change_camera": False,
             "leftClick": False,
             "space": False,
-            "p":False,
+            "p": False,
             "scrollup": False,
             "scrolldown": False
         }
 
-        accept("escape", sys.exit)
+        accept("escape", self.updateKey, ["p", True])
+        accept("escape-up" , self.updateKey, ["p", False])
+
         accept("w", self.updateKey, ["forward", True])  #
         accept("w-up", self.updateKey, ["forward", False])
 
@@ -135,11 +137,7 @@ class Player():
         accept("c",self.updateKey,["change_camera", True])
 
         accept("wheel_up",self.updateKey,["scrollup",True])
-
         accept("wheel_down",self.updateKey,["scrolldown",True])
-
-        accept("p", self.updateKey, ["p", True])
-        accept("p-up", self.updateKey, ["p", False])
 
         accept("space",self.updateKey,["space",True])
         accept("space-up",self.updateKey,["space",False])
