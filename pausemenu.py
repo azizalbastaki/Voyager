@@ -1,4 +1,6 @@
 # Written by Abdulaziz Albastaki in June 2022
+import sys
+
 from direct.gui.OnscreenText import OnscreenText
 from direct.gui.OnscreenImage import OnscreenImage
 from direct.gui.DirectButton import DirectButton
@@ -25,9 +27,11 @@ class pauseMenu():
                                           scale=0.06,parent=self.card, shadow=(0.05,0.05,0.05,1)
                                           ,shadowOffset=(0.05,0.05), align = TextNode.ACenter)
 
-        self.resumeButton = DirectButton(text=("Resume"),
+        self.resumeButton = DirectButton(text="Resume", pos=(0,0 ,0.1), scale=0.1, command=self.hide)
 
-                 scale=0.1, command=self.hide)
+        self.quitButton = DirectButton(text="Quit", pos=(0,0, -0.1),
+
+                 scale=0.1, command=self.quitGame)
 
     # def resumeFunc(self):
     #     print("Clicked!")
@@ -40,6 +44,7 @@ class pauseMenu():
         self.card.show()
         self.menuText.show()
         self.resumeButton.show()
+        self.quitButton.show()
         self.isDisplayed = True
 
     def hide(self):
@@ -48,6 +53,10 @@ class pauseMenu():
         self.menuText.hide()
         self.resumeButton.hide()
         self.isDisplayed = False
+        self.quitButton.hide()
+
+    def quitGame(self):
+        sys.exit()
 
 
 
